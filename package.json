@@ -2,7 +2,7 @@
   "name": "next-firebase-starter",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Yarelis Martin",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
