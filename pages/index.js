@@ -1,15 +1,9 @@
 import { Button } from 'react-bootstrap';
-import { useEffect } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { getSongs } from '../api/SongsApi';
 
 function Home() {
   const { user } = useAuth();
-
-  useEffect(() => {
-    getSongs.then(console.warn);
-  });
 
   return (
     <div
