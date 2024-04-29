@@ -1,20 +1,20 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { GrFormView } from 'react-icons/gr';
 import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 
-export default function PlaylistCard() {
+export default function PlaylistCard({ playlistObj }) {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="https://img.freepik.com/premium-vector/summer-music-playlist-cover-concept-with-realistic-vinyl-disk-mockup-with-summer-sunset-cover_148087-455.jpg" />
+      <Card.Img variant="top" src={playlistObj?.imageUrl} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{playlistObj?.name}</Card.Title>
         <Card.Text>
-          Date Created: 00/00/00
+          {playlistObj?.dateCreated}
         </Card.Text>
         <div style={{
           marginRight: '10px',
@@ -28,3 +28,13 @@ export default function PlaylistCard() {
     </Card>
   );
 }
+
+PlaylistCard.propTypes = {
+  playlistObj: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    dateCreated: PropTypes.string,
+    isFavorite: PropTypes.bool,
+    imageUrl: PropTypes.string,
+  }).isRequired,
+};
