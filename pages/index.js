@@ -1,4 +1,4 @@
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
@@ -15,12 +15,15 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <Card style={{ height: '300px', width: '300px' }} id="wave">
+
+        <h1>Hello {user.fbUser.displayName}! </h1>
+        <p>Your Bio: {user.bio}</p>
+        <p>Click the button below to logout!</p>
+        <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
+          Sign Out
+        </Button>
+      </Card>
     </div>
   );
 }
