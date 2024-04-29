@@ -1,4 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import '../src/output.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -6,6 +10,11 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-size: 100% 100%;
+    background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+    background-image: radial-gradient(18% 28% at 24% 50%, #FFCEF6FF 7%, #073AFF00 100%),radial-gradient(30% 57% at 29% 59%, #F2B6FAFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 8% 75%, #AEA2FEFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #F8FBFDFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFECF3FF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #E2E6FBFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #FBBEFC9C 24%, #073AFF00 100%),radial-gradient(70% 73% at 62% 77%, #3B58FDF5 9%, #073AFF00 100%),radial-gradient(54% 112% at 67% 38%, #FE9FB8F5 34%, #073AFF00 100%),linear-gradient(125deg, #FC6FD6FF 1%, #0223FCFF 100%);
+  height: 100%;
+  
 }
 
 a {
@@ -17,6 +26,15 @@ a {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #88effd;
+#nav {
+  height: 100vh;
+}
+
+#__next {
+  display: flex;
+  flex-direction: row;
+}
+
+#bar {
+  height: 100vh;
 }
