@@ -1,40 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
-import {
-  Navbar, //
-  Container,
-  Nav,
-  Button,
-} from 'react-bootstrap';
-import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Link passHref href="/">
-          <Navbar.Brand>Y2Play</Navbar.Brand>
-        </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
-            <Link passHref href="/">
-              <Nav.Link>Home</Nav.Link>
+    <>
+      <div
+        id="nav"
+        className="fixed inset-y-0 z-10 flex w-60"
+      >
+        <svg
+          id="bar"
+          className="absolute inset-0 w-full h-full text-white"
+          style={{ filter: 'drop-shadow(10px 0 10px #00000030)' }}
+          preserveAspectRatio="none"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 430.7 800"
+        >
+          <path d="M 268.487 0 H 0 V 800 H 247.32 Q 400 735 311 643 Q 120 446 268.487 367.647 Q 593 190 268.487 0 Z" fill="#FFFFFF" />
+        </svg>
+        <div className="z-10 flex flex-col flex-1">
+          <div className="flex items-center justify-between flex-shrink-0 w-64 p-4">
+            <Link style={{ color: 'black' }} passHref href="/">Home
+
             </Link>
-            <Link passHref href="/playlists">
-              <Nav.Link>My Playlist</Nav.Link>
-            </Link>
-            <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
-            </Link>
-            <Button variant="danger" onClick={signOut}>
-              Sign Out
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </div>
+
+        </div>
+
+      </div>
+    </>
   );
 }
