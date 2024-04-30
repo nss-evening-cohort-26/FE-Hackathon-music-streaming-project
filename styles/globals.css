@@ -57,26 +57,26 @@ a {
   color: #000;
 }
 
-/* Change text color to black on hover for song name, artist, and details */
+
 .song-card:hover .song-name,
 .song-card:hover .song-artist,
 .song-card:hover .song-details {
   color: #fff;
 }
 
-/* Add hover effect */
+
 .song-card:hover {
-  background-color: #f9f9f9; /* Change background color on hover */
+  background-color: #f9f9f9; 
 }
 
-/* Add hover effect for delete button */
+
 .song-card:hover .delete-btn {
   background-color: #ff3333;
 }
 
-/* Add hover effect for song details */
+
 .song-card:hover .song-details {
-  color: #fff; /* Change text color of song details on hover */
+  color: #fff; 
 }
 
 
@@ -103,9 +103,9 @@ a {
 }
 
 .delete-btn {
-  background-color: transparent; /* Set background to transparent */
-  color: #000; /* Set text color to black */
-  border: 1px solid #ff3333; /* Add red border */
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #ff3333;
   border-radius: 5px;
   padding: 8px 16px;
   font-size: 14px;
@@ -113,14 +113,14 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-/* Change background color on hover */
+
 .delete-btn:hover {
   background-color: #ff3333;
-  color: #fff; /* Change text color to white on hover */
+  color: #fff; 
 }
 
 .song-card:hover .delete-btn {
-  color: #fff; /* Change text color to white on card hover */
+  color: #fff; 
 }
 
 .song-card:hover {
