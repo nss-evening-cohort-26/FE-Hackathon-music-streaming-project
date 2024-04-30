@@ -22,11 +22,14 @@ export default function NavBar() {
         </svg>
         <div className="z-10 flex flex-col flex-1">
           <div className="flex items-center justify-between flex-shrink-0 w-64 p-4">
-            <Link style={{ color: 'black' }} passHref href="/">Home
-
-            </Link>
+            <Link style={{ color: 'black' }} passHref href="/">Home</Link>
           </div>
-
+          <div className="flex items-center justify-between flex-shrink-0 w-64 p-4">
+            <Link style={{ color: 'black' }} passHref href="/playlists">Playlists</Link>
+          </div>
+          <div className="flex items-center justify-between flex-shrink-0 w-64 p-4">
+            <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
+          </div>
         </div>
 
       </div>
