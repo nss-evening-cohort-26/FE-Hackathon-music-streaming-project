@@ -42,7 +42,7 @@ export default function PlaylistForm({ playObj }) {
   };
 
   return (
-    <div style={{ marginLeft: '100px' }}>
+    <div style={{ marginLeft: '200px', width: '80%' }}>
       <Form onSubmit={handleSubmit}>
         <h2 className="text-white mt-5">{playObj.id ? 'Update' : 'Create'} Playlist</h2>
         <Form.Group className="mb-3" controlId="floatingInput1">
