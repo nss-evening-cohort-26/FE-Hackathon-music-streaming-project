@@ -9,12 +9,12 @@ import PlaylistStyles from '../styles/PlaylistCard.module.css';
 
 export default function PlaylistCard({ playlistObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={playlistObj?.imageUrl} />
+    <Card style={{ width: '18rem', margin: '20px 20px' }}>
+      <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px' }} />
       <Card.Body>
-        <Card.Title>{playlistObj?.name}</Card.Title>
+        <Card.Title>{playlistObj.name}</Card.Title>
         <Card.Text>
-          {playlistObj?.dateCreated}
+          {playlistObj.dateCreated}
         </Card.Text>
         <div style={{
           marginRight: '10px',
