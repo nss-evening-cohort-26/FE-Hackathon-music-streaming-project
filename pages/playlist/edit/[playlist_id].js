@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getPlaylistById } from '../../../API/PlaylistData';
+import { getPlaylistById } from '../../../api/PlaylistData';
 import { useAuth } from '../../../utils/context/authContext';
 import PlaylistForm from '../../../components/form/PlaylistForm';
 
