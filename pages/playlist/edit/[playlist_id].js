@@ -13,7 +13,7 @@ export default function EditPlaylist() {
 
   useEffect(() => {
     getPlaylistById(id, user.id).then(setEditItem);
-  }, [id]);
+  }, [user.id]);
 
   return (
     <div>

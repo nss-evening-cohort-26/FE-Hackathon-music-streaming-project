@@ -14,16 +14,16 @@ const initialValue = {
 };
 
 export default function PlaylistForm({ playObj }) {
-  const [formInput, setFormInput] = useState();
+  const [formInput, setFormInput] = useState(initialValue);
   const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
     if (playObj.id) setFormInput(playObj);
-  }, [playObj, user]);
+  }, [playObj]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target; /* got error when wrapping name, value in square brackets */
+    const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
@@ -33,23 +33,19 @@ export default function PlaylistForm({ playObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (playObj.id) {
-      updatePlaylist(formInput).then(() => router.push(`/playlist/${playObj.id}`));
+      updatePlaylist(playObj.id, formInput).then(() => router.push(`/playlist/${playObj.id}`));
     } else {
-      const payload = { ...formInput, id: user.uid };
-      createPlaylist(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updatePlaylist(patchPayload).then(() => router.push('/playlist'));
-      });
+      const payload = { ...formInput };
+      createPlaylist(payload, user.id)?.then(router.push('/playlists'));
+      console.warn(payload);
     }
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: '100px' }}>
       <Form onSubmit={handleSubmit}>
-        <h2>{playObj.id ? 'Update' : 'Create'} Playlist</h2>
-
-        {/* TITLE INPUT  */}
-        <Form.Group className="mb-3">
+        <h2 className="text-white mt-5">{playObj.id ? 'Update' : 'Create'} Playlist</h2>
+        <Form.Group className="mb-3" controlId="floatingInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -60,24 +56,13 @@ export default function PlaylistForm({ playObj }) {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3" controlId="floatingInput1">
           <Form.Label>Image</Form.Label>
           <Form.Control
-            type="text"
+            type="url"
             placeholder="Image URL of the playlist..."
             name="imageUrl"
             value={formInput.imageUrl}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Image</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Eneter a image address of player"
-            name="image"
-            value={formInput.image}
             onChange={handleChange}
             required
           />
@@ -120,10 +105,11 @@ export default function PlaylistForm({ playObj }) {
 
 PlaylistForm.propTypes = {
   playObj: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     imageUrl: PropTypes.string,
     isFavorite: PropTypes.bool,
-    id: PropTypes.number,
+    userId: PropTypes.number,
   }),
 };
 
