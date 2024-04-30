@@ -19,7 +19,7 @@ export default function PlaylistForm({ playObj }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (playObj.id) setFormInput(playObj);
+    if (playObj?.id) setFormInput(playObj);
   }, [playObj]);
 
   const handleChange = (e) => {
