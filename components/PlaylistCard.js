@@ -22,7 +22,7 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{playlistObj.name}</Card.Title>
         <Card.Text>
-          {playlistObj.dateCreated}
+          Created on: {playlistObj.dateCreated}
         </Card.Text>
         <div style={{
           marginRight: '10px',
