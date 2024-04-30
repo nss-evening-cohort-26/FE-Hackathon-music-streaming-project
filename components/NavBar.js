@@ -30,7 +30,6 @@ export default function NavBar() {
             <Link style={{ color: 'black' }} passHref href="/">Y2Play
             </Link>
           </div>
-
         </div>
 
       </div>
