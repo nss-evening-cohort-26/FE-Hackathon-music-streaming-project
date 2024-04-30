@@ -6,8 +6,15 @@ import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
+import { deletePlaylist } from '../API/PlaylistData';
 
-export default function PlaylistCard({ playlistObj }) {
+export default function PlaylistCard({ playlistObj, onUpdate }) {
+  const deleteThisPlaylist = () => {
+    if (window.confirm(`Sure you want to delete ${playlistObj.name}?`)) {
+      deletePlaylist(playlistObj.id).then(() => onUpdate());
+    }
+  };
+
   return (
     <Card style={{ width: '18rem', margin: '20px 20px' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px' }} />
@@ -22,7 +29,7 @@ export default function PlaylistCard({ playlistObj }) {
         >
           <Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button>
           <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
-          <Button variant="danger" className={PlaylistStyles.spaceBtn}><MdDeleteForever /></Button>
+          <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
       </Card.Body>
     </Card>
@@ -37,4 +44,5 @@ PlaylistCard.propTypes = {
     isFavorite: PropTypes.bool,
     imageUrl: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
