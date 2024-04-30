@@ -5,6 +5,7 @@ import { GrFormView } from 'react-icons/gr';
 import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 
 export default function PlaylistCard({ playlistObj }) {
@@ -20,7 +21,7 @@ export default function PlaylistCard({ playlistObj }) {
           marginRight: '10px',
         }}
         >
-          <Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button>
+          <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
           <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
           <Button variant="danger" className={PlaylistStyles.spaceBtn}><MdDeleteForever /></Button>
         </div>

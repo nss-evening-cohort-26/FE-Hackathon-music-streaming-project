@@ -1,9 +1,10 @@
 import React from 'react';
+import PlaylistDetail from '../../components/PlaylistDetail';
 
 export default function PlaylistDetails() {
   return (
     <div>
-      Playlist Name and songs in Playlis if any goes here.
+      <PlaylistDetail />
     </div>
   );
 }

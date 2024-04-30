@@ -38,3 +38,93 @@ a {
 #bar {
   height: 100vh;
 }
+
+
+.song-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out; 
+  margin: 20px;
+}
+
+.song-name,
+.song-artist,
+.song-details {
+  color: #000;
+}
+
+/* Change text color to black on hover for song name, artist, and details */
+.song-card:hover .song-name,
+.song-card:hover .song-artist,
+.song-card:hover .song-details {
+  color: #fff;
+}
+
+/* Add hover effect */
+.song-card:hover {
+  background-color: #f9f9f9; /* Change background color on hover */
+}
+
+/* Add hover effect for delete button */
+.song-card:hover .delete-btn {
+  background-color: #ff3333;
+}
+
+/* Add hover effect for song details */
+.song-card:hover .song-details {
+  color: #fff; /* Change text color of song details on hover */
+}
+
+
+.song-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.song-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.song-artist {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.song-details {
+  font-size: 14px;
+  color: #333;
+}
+
+.delete-btn {
+  background-color: transparent; /* Set background to transparent */
+  color: #000; /* Set text color to black */
+  border: 1px solid #ff3333; /* Add red border */
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Change background color on hover */
+.delete-btn:hover {
+  background-color: #ff3333;
+  color: #fff; /* Change text color to white on hover */
+}
+
+.song-card:hover .delete-btn {
+  color: #fff; /* Change text color to white on card hover */
+}
+
+.song-card:hover {
+  background-size: 100% 100%;
+  background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+  background-image: radial-gradient(18% 28% at 24% 50%, #CEFAFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #D3FF6D9C 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #6DFFAEF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #4C00FCFF 100%);
+}
