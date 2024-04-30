@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { getPlaylistById } from '../../../API/PlaylistData';
+import { useAuth } from '../../../utils/context/authContext';
+import PlaylistForm from '../../../components/form/PlaylistForm';
 
 export default function EditPlaylist() {
+  const [editItem, setEditItem] = useState({});
+  const router = useRouter();
+  const user = useAuth();
+
+  const { id } = router.query;
+
+  useEffect(() => {
+    getPlaylistById(id, user.id).then(setEditItem);
+  }, [id]);
+
   return (
     <div>
-      Form to edit playlist go here with functionality.
+      <PlaylistForm playObj={editItem} />
     </div>
   );
 }
