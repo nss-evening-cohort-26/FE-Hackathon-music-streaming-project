@@ -7,7 +7,7 @@ import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
-import { deletePlaylist } from '../API/PlaylistData';
+import { deletePlaylist } from '../api/PlaylistData';
 
 export default function PlaylistCard({ playlistObj, onUpdate }) {
   const deleteThisPlaylist = () => {

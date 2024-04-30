@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import '../src/output.css';
+@import url('https://fonts.googleapis.com/css2?family=Audiowide');
+@import url('https://fonts.googleapis.com/css2?family=Armata');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +14,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background-size: 100% 100%;
     background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
-    background-image: radial-gradient(18% 28% at 24% 50%, #FFCEF6FF 7%, #073AFF00 100%),radial-gradient(30% 57% at 29% 59%, #F2B6FAFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 8% 75%, #AEA2FEFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #F8FBFDFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFECF3FF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #E2E6FBFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #FBBEFC9C 24%, #073AFF00 100%),radial-gradient(70% 73% at 62% 77%, #3B58FDF5 9%, #073AFF00 100%),radial-gradient(54% 112% at 67% 38%, #FE9FB8F5 34%, #073AFF00 100%),linear-gradient(125deg, #FC6FD6FF 1%, #0223FCFF 100%);
+    background-image: url("/waves.jpg");
+
+    /* background-image: radial-gradient(18% 28% at 24% 50%, #FFCEF6FF 7%, #073AFF00 100%),radial-gradient(30% 57% at 29% 59%, #F2B6FAFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 8% 75%, #AEA2FEFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #F8FBFDFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFECF3FF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #E2E6FBFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #FBBEFC9C 24%, #073AFF00 100%),radial-gradient(70% 73% at 62% 77%, #3B58FDF5 9%, #073AFF00 100%),radial-gradient(54% 112% at 67% 38%, #FE9FB8F5 34%, #073AFF00 100%),linear-gradient(125deg, #FC6FD6FF 1%, #0223FCFF 100%); */
   height: 100%;
   
 }
@@ -28,6 +32,7 @@ a {
 
 #nav {
   height: 100vh;
+  font-size: 40px;
 }
 
 #__next {
@@ -38,3 +43,53 @@ a {
 #bar {
   height: 100vh;
 }
+
+.audio {
+  font-family: Audiowide;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 100vh;
+}
+
+.pill {
+  background-size: 100% 100%;
+  background-position: 0px 0px,0px 0px;
+  background-image: radial-gradient(#FFFFFF 0%, #787A91 100%); 
+  border-radius: 500px;
+  padding: 40px;
+  border:#484950 solid 2px;
+  box-shadow: inset 0 0 10px #000000;
+
+}
+
+.blob {
+  width: 250px;
+  height: 300px;
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: url("/blob.png"), radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
+}
+
+.console-box {
+  margin-left: 40px;
+}
+  .console {
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    position: relative;
+    z-index: 2;
+    align-content: center;
+
+  }
+
+  .text-box {
+    position: absolute;
+    z-index: 4;
+    font-family: Armata;
+    align-self: center;
+
+  }

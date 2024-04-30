@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import PlaylistCard from '../components/PlaylistCard';
-import { getUserPlaylists } from '../API/PlaylistData';
+import { getUserPlaylists } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function ShowPlaylists() {

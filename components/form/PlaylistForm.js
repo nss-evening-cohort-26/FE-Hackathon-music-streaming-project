@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../utils/context/authContext';
-import { createPlaylist, updatePlaylist } from '../../API/PlaylistData';
+import { createPlaylist, updatePlaylist } from '../../api/PlaylistData';
 
 const initialValue = {
   name: '',
