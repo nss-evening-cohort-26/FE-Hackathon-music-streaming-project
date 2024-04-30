@@ -15,7 +15,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <Card style={{ height: '300px', width: '300px' }} id="wave">
+      <Card className="console">
 
         <h1>Hello {user.fbUser.displayName}! </h1>
         <p>Your Bio: {user.bio}</p>
