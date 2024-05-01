@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
+import Link from 'next/link';
 import PlaylistDetail from '../../components/PlaylistDetail';
-import { getPlaylistById } from '../../api/PlaylistData';
+import { deletePlaylist, getPlaylistById } from '../../api/PlaylistData';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function PlaylistDetails() {
@@ -17,6 +18,12 @@ export default function PlaylistDetails() {
   const getPlayListSongs = () => {
     getPlaylistById(playlist_id, user.id).then(setPlaylistDetail);
     console.warn(getPlaylistById(playlist_id, user.id));
+  };
+
+  const deleteThisPlaylist = () => {
+    if (window.confirm(`Sure you want to delete ${playlistDetail.name}?`)) {
+      deletePlaylist(playlist_id).then(router.push('/playlists'));
+    }
   };
 
   useEffect(() => {
@@ -32,8 +39,8 @@ export default function PlaylistDetails() {
       <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '25px' }}>
         <div>
           <h3 className="display-5 mb-3"> {playlistDetail.name}</h3>
-          <Button variant="success" style={{ borderRadius: '20px', padding: '5px 25px', marginRight: '5px' }}>Edit</Button>
-          <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }}>Delete</Button>
+          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button variant="success" style={{ borderRadius: '20px', padding: '5px 25px', marginRight: '5px' }}>Edit</Button></Link>
+          <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }} onClick={deleteThisPlaylist}>Delete</Button>
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end' }}>
           <Button
