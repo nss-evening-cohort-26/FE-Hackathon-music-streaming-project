@@ -16,13 +16,19 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
     }
   };
 
+  const formattedDate = new Date(playlistObj.dateCreated).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
+
   return (
     <Card style={{ width: '18rem', margin: '20px 20px' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px' }} />
       <Card.Body>
         <Card.Title>{playlistObj.name}</Card.Title>
         <Card.Text>
-          {playlistObj.dateCreated}
+          Created on: {formattedDate}
         </Card.Text>
         <div style={{
           marginRight: '10px',

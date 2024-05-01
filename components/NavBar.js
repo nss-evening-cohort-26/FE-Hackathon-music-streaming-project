@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { IoMdMenu } from 'react-icons/io';
 
 export default function NavBar() {
   const [show, setShow] = useState(false);
@@ -15,21 +16,25 @@ export default function NavBar() {
   return (
     <div id="menu">
       <Button
+        id="blob"
         type="button"
         onClick={handleShow}
         style={{ margin: '8px' }}
-      >Open
+      >
+        <IoMdMenu />
       </Button>
       <div
         id="nav"
-        className={show ? 'w-60 fixed inset-y-0 z-10 flex flex-col' : 'hidden'}
+        className={show ? 'w-60 fixed inset-y-0 z-10 flex flex-col align-items-start' : 'hidden'}
 
       >
         <Button
-          type="button"
+          id="close"
+          className="xbutton"
           onClick={handleClose}
-          style={{ width: '50px', zIndex: '20', margin: '8px' }}
-        >X
+          style={{ zIndex: '20', margin: '8px' }}
+        >
+          <span>X</span>
         </Button>
         <svg
           id="bar"
@@ -47,10 +52,18 @@ export default function NavBar() {
           </defs>
           <path d="M 268.487 0 H 0 V 800 H 247.32 Q 400 735 311 643 Q 120 446 268.487 367.647 Q 593 190 268.487 0 Z" fill="url(#gradient)" stroke="#2C2C2C" strokeWidth="3" strokeOpacity="0.4" />
         </svg>
-        <div className="z-20 flex flex-col flex-1">
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-4 mt-2">
-            <Link style={{ color: 'black' }} passHref href="/">Y2Play
-            </Link>
+        <div className="z-10 flex flex-col flex-1 p-1">
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2 mt-2">
+            <Link style={{ color: 'black' }} passHref href="/">Y2Play</Link>
+          </div>
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+            <Link style={{ color: 'black' }} passHref href="/">Home</Link>
+          </div>
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+            <Link style={{ color: 'black' }} passHref href="/playlists">Playlists</Link>
+          </div>
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+            <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
           </div>
         </div>
 
