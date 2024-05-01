@@ -33,6 +33,7 @@ a {
 #nav {
   height: 100vh;
   font-size: 40px;
+
 }
 
 #__next {
@@ -74,9 +75,6 @@ a {
   background-image: url("/blob.png"), radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
 }
 
-.console-box {
-  margin-left: 40px;
-}
   .console {
     background-size: 100% 100%;
     background-position: 0px 0px;
@@ -92,4 +90,8 @@ a {
     font-family: Armata;
     align-self: center;
 
+  }
+
+  .hidden {
+    display: none;
   }
