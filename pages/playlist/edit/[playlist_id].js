@@ -9,7 +9,7 @@ import PlaylistForm from '../../../components/form/PlaylistForm';
 export default function EditPlaylist() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  const user = useAuth();
+  const { user } = useAuth();
 
   const { playlist_id } = router.query;
 

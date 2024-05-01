@@ -21,7 +21,7 @@ export default function PlaylistDetails() {
   };
 
   const deleteThisPlaylist = () => {
-    if (window.confirm(`Sure you want to delete ${playlistDetail.name}?`)) {
+    if (window.confirm(`Sure you want to delete ${playlistDetail.name} ?`)) {
       deletePlaylist(playlist_id).then(router.push('/playlists'));
     }
   };
