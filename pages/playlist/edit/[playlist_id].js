@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
