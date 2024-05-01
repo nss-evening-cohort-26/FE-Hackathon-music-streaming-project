@@ -13,7 +13,7 @@ const initialValue = {
 
 };
 
-export default function PlaylistForm({ playObj }) {
+export default function PlaylistForm({ playObj, onUpdate }) {
   const [formInput, setFormInput] = useState(initialValue);
   const { user } = useAuth();
   const router = useRouter();
@@ -36,8 +36,11 @@ export default function PlaylistForm({ playObj }) {
       updatePlaylist(playObj.id, formInput).then(() => router.push(`/playlist/${playObj.id}`));
     } else {
       const payload = { ...formInput };
-      createPlaylist(payload, user.id)?.then(router.push('/playlists'));
-      console.warn(payload);
+      createPlaylist(payload, user.id)?.then(() => {
+        router.push('/playlists');
+        onUpdate();
+        console.warn(payload);
+      });
     }
   };
 
@@ -111,6 +114,7 @@ PlaylistForm.propTypes = {
     isFavorite: PropTypes.bool,
     userId: PropTypes.number,
   }),
+  onUpdate: PropTypes.func.isRequired,
 };
 
 PlaylistForm.defaultProps = {
