@@ -6,6 +6,7 @@ import { GrFormView } from 'react-icons/gr';
 import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
 
@@ -34,8 +35,10 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
           marginRight: '10px',
         }}
         >
-          <Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button>
-          <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+          <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
+          <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
+            <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+          </Link>
           <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
       </Card.Body>
