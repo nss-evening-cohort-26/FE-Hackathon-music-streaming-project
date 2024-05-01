@@ -36,7 +36,9 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
         }}
         >
           <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
-          <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+          <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
+            <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+          </Link>
           <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
       </Card.Body>

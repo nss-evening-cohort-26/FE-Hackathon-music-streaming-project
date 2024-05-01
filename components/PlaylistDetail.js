@@ -1,39 +1,49 @@
 /* eslint-disable no-lone-blocks */
 import React from 'react';
-import { Button } from 'react-bootstrap';
 
-export default function PlaylistDetail() {
+import PropTypes from 'prop-types';
+
+export default function PlaylistDetail({ songObj }) {
   return (
-    <div style={{ marginLeft: '200px', width: '80%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '25px' }}>
-        <div>
-          <h3 className="display-5 mb-3"> Playlist Name</h3>
-          <Button variant="success" style={{ borderRadius: '20px', padding: '5px 25px', marginRight: '5px' }}>Edit</Button>
-          <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }}>Delete</Button>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-          <Button
-            variant="primary"
-            style={{
-              borderRadius: '20px', padding: '3px 25px', fontSize: '20px', height: '45px',
-            }}
-          >Add A Song
-          </Button>
-        </div>
-      </div>
+    <>
       <div className="song-card">
         <div className="song-info">
-          <h3 className="song-name">Song Name Placeholder</h3>
-          <p className="song-artist">Artist Placeholder</p>
+          <h3 className="song-name">{songObj.name}</h3>
+          <p className="song-artist">{songObj.artistName}</p>
           <p className="song-details">
-            <strong>Genre:</strong> Genre Placeholder | <strong>Year:</strong> Year Placeholder | <strong>Duration:</strong> Duration Placeholder
+            <strong>Genre:</strong> {songObj.genreName} | <strong>Year: {songObj.year}</strong>  | <strong>Duration:</strong> {songObj.duration}
           </p>
         </div>
         <button type="button" className="delete-btn">Delete</button>
       </div>
-    </div>
+    </>
   );
 }
+
+PlaylistDetail.propTypes = {
+  songObj: PropTypes.shape({
+    name: PropTypes.string,
+    artistName: PropTypes.string,
+    genreName: PropTypes.string,
+    year: PropTypes.number,
+    duration: PropTypes.string,
+  }).isRequired,
+};
+
+// PlaylistDetail.propTypes = {
+//   songObj: PropTypes.shape({
+//     name: PropTypes.string,
+//     artist: PropTypes.shape({
+//       name: PropTypes.string,
+//     }),
+//     genre: PropTypes.shape({
+//       name: PropTypes.string,
+//     }),
+//     year: PropTypes.number,
+//     duration: PropTypes.string,
+
+//   }).isRequired,
+// };
 
 { /* <Card className="mb-3">
 <Card.Body className="d-flex justify-content-between align-items-center">

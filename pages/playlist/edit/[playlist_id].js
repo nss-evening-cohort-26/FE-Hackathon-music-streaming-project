@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getPlaylistById } from '../../../api/PlaylistData';
@@ -9,12 +10,13 @@ export default function EditPlaylist() {
   const router = useRouter();
   const user = useAuth();
 
-  const { id } = router.query;
+  const { playlist_id } = router.query;
 
   useEffect(() => {
-    getPlaylistById(id, user.id).then(setEditItem);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.id]);
+    getPlaylistById(playlist_id, user.id).then(setEditItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.warn(editItem);
+  }, [playlist_id]);
 
   return (
     <div>
