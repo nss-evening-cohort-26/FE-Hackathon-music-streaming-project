@@ -16,6 +16,7 @@ export default function PlaylistDetails() {
 
   const getPlayListSongs = () => {
     getPlaylistById(playlist_id, user.id).then(setPlaylistDetail);
+    console.warn(getPlaylistById(playlist_id, user.id));
   };
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function PlaylistDetails() {
     <div style={{ marginLeft: '200px', width: '80%' }}>
       <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '25px' }}>
         <div>
-          <h3 className="display-5 mb-3"> Playlist Name</h3>
+          <h3 className="display-5 mb-3"> {playlistDetail.name}</h3>
           <Button variant="success" style={{ borderRadius: '20px', padding: '5px 25px', marginRight: '5px' }}>Edit</Button>
           <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }}>Delete</Button>
         </div>
