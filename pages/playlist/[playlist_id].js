@@ -43,13 +43,15 @@ export default function PlaylistDetails() {
           <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }} onClick={deleteThisPlaylist}>Delete</Button>
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-          <Button
-            variant="primary"
-            style={{
-              borderRadius: '20px', padding: '3px 25px', fontSize: '20px', height: '45px',
-            }}
-          >Add A Song
-          </Button>
+          <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
+            <Button
+              variant="primary"
+              style={{
+                borderRadius: '20px', padding: '3px 25px', fontSize: '20px', height: '45px',
+              }}
+            >Add A Song
+            </Button>
+          </Link>
         </div>
       </div>
       {playlistDetail.songs?.map((songObject) => (
