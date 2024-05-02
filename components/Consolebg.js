@@ -1,7 +1,7 @@
 export default function Consolebg() {
   return (
     <div
-      className="z-0 text-center d-flex flex-column justify-content-center align-content-center"
+      className="z-2 text-center d-flex flex-column justify-content-center align-content-center position-absolute"
     >
       <div className="console audio">
         <svg

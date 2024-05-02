@@ -68,12 +68,16 @@ a {
 
 }
 
+h1{
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-family: Audiowide;
+}
+
 .blob {
   width: 250px;
   height: 300px;
-  background-size: 100% 100%;
-  background-position: 0px 0px;
-  background-image: url("/blob.png"), radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
+  background-image: radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
 }
 
   .console {
@@ -93,6 +97,15 @@ a {
 
   }
 
+  .onTop {
+    z-index: 4;
+    position: 'relative';
+  }
+
+  .text {
+    font-family: Armata;
+  }
+
   .hidden {
     transform: translateX(-100%);
     transition: all .5s ease-in-out;
@@ -107,11 +120,10 @@ a {
   .xbutton {
     cursor: pointer;
 	position: relative;
-	padding: .5rem 3rem;
+	padding: .5rem 4rem;
 	border-radius: 3.75rem;
 	line-height: 2.5rem;
 	font-size: 2rem;
-	font-weight: 600;
 	
 	border: .5px solid hsla(290, 100%, 20%, 1);
 	background-image: linear-gradient(-180deg, #FF89D6 0%, #C01F9E 100%);
@@ -123,10 +135,11 @@ a {
 
 .xbutton span {
 	color: transparent;
-	background-image: linear-gradient(0deg, #EE82DA 0%, #FEFAFD 100%);
+	background-color:#FEFAFD;
 	-webkit-background-clip: text;
 	background-clip: text;
 	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+
   }
 
   .xbutton::before {
@@ -164,6 +177,11 @@ a {
 
   #toggle {
     min-height: 4rem;
+    margin: 20px 0 20px 10px;
+  }
+
+  #links {
+    margin-top: 80px
   }
 
 .song-card {
@@ -253,4 +271,9 @@ a {
   background-size: 100% 100%;
   background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
   background-image: radial-gradient(18% 28% at 24% 50%, #CEFAFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #D3FF6D9C 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #6DFFAEF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #4C00FCFF 100%);
+}
+
+.card-box {
+  bottom: 10px;
+  display: flex;
 }
