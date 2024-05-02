@@ -7,7 +7,6 @@ import Link from 'next/link';
 import PlaylistDetail from '../../components/PlaylistDetail';
 import { deletePlaylist, getPlaylistById } from '../../api/PlaylistData';
 import { useAuth } from '../../utils/context/authContext';
-import Consolebg from '../../components/Consolebg';
 
 export default function PlaylistDetails() {
   const [playlistDetail, setPlaylistDetail] = useState({});
@@ -37,8 +36,7 @@ export default function PlaylistDetails() {
 
   return (
     <>
-      <Consolebg />
-      <div className="onTop" style={{ width: '80%' }}>
+      <div style={{ width: '80%' }}>
         <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '25px' }}>
           <div>
             <h3 className="display-5 mb-3"> {playlistDetail.name}</h3>
