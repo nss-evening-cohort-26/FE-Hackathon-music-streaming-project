@@ -1,9 +1,15 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-lone-blocks */
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 
 export default function PlaylistDetail({ songObj }) {
+  const router = useRouter();
+
+  const { playlist_id } = router.query;
+
   return (
     <>
       <div className="song-card">
@@ -14,7 +20,7 @@ export default function PlaylistDetail({ songObj }) {
             <strong>Genre:</strong> {songObj.genreName} | <strong>Year: {songObj.year}</strong>  | <strong>Duration:</strong> {songObj.duration}
           </p>
         </div>
-        <button type="button" className="delete-btn">Delete</button>
+        {router.asPath === `/playlist/${playlist_id}` ? <button type="button" className="delete-btn">Delete</button> : <button type="button" className="delete-btn">Add</button>}
       </div>
     </>
   );

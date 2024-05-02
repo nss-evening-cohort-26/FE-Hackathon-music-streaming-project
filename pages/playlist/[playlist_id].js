@@ -17,7 +17,6 @@ export default function PlaylistDetails() {
 
   const getPlayListSongs = () => {
     getPlaylistById(playlist_id, user.id).then(setPlaylistDetail);
-    console.warn(getPlaylistById(playlist_id, user.id));
   };
 
   const deleteThisPlaylist = () => {
@@ -28,7 +27,6 @@ export default function PlaylistDetails() {
 
   useEffect(() => {
     getPlayListSongs();
-    console.warn(playlist_id);
     return () => {
       setPlaylistDetail({});
     };
