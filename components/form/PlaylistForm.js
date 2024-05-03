@@ -45,9 +45,11 @@ export default function PlaylistForm({ playObj, onUpdate }) {
   };
 
   return (
-    <div style={{ marginLeft: '100px', width: '80%' }}>
-      <Form onSubmit={handleSubmit}>
-        <h2 className="text-white mt-5">{playObj.id ? 'Update' : 'Create'} Playlist</h2>
+    <div
+      className="onTop"
+    >
+      <Form className="text" onSubmit={handleSubmit}>
+        <h1 className="text-black mt-5 audio">{playObj.id ? 'Update' : 'Create'} Playlist</h1>
         <Form.Group className="mb-3" controlId="floatingInput1">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -72,7 +74,7 @@ export default function PlaylistForm({ playObj, onUpdate }) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
-            className="text-white mt-5"
+            className="text-black mt-5"
             type="switch"
             label="Is this your favorite Playlist?"
             name="isFavorite"
@@ -100,7 +102,7 @@ export default function PlaylistForm({ playObj, onUpdate }) {
             }}
           />
         </Form.Group> */}
-        <Button style={{ marginTop: '15px' }} type="submit">{playObj.id ? 'Update' : 'Create'} Playlist</Button>
+        <Button className="xbutton" style={{ fontSize: '20px', marginTop: '15px', justifySelf: 'center' }} type="submit">{playObj.id ? 'Update' : 'Create'}</Button>
       </Form>
     </div>
   );

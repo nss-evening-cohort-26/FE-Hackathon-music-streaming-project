@@ -32,7 +32,9 @@ a {
 
 #nav {
   height: 100vh;
-  font-size: 40px;
+  font-size: 30px;
+  padding-top: 15px;
+
 }
 
 #__next {
@@ -66,17 +68,18 @@ a {
 
 }
 
+h1{
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-family: Audiowide;
+}
+
 .blob {
   width: 250px;
   height: 300px;
-  background-size: 100% 100%;
-  background-position: 0px 0px;
-  background-image: url("/blob.png"), radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
+  background-image: radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
 }
 
-.console-box {
-  margin-left: 40px;
-}
   .console {
     background-size: 100% 100%;
     background-position: 0px 0px;
@@ -94,6 +97,92 @@ a {
 
   }
 
+  .onTop {
+    z-index: 4;
+    position: 'relative';
+  }
+
+  .text {
+    font-family: Armata;
+  }
+
+  .hidden {
+    transform: translateX(-100%);
+    transition: all .5s ease-in-out;
+  }
+
+  .open {
+    transform: translateX(0);
+    transition: all .5s ease-in-out;
+
+  }
+
+  .xbutton {
+    cursor: pointer;
+	position: relative;
+	padding: .5rem 4rem;
+	border-radius: 3.75rem;
+	line-height: 2.5rem;
+	font-size: 2rem;
+	
+	border: .5px solid hsla(290, 100%, 20%, 1);
+	background-image: linear-gradient(-180deg, #FF89D6 0%, #C01F9E 100%);
+	box-shadow: 0 1rem 1.25rem 0 hsla(290, 100%, 20%, 1),
+							0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+							0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+.xbutton span {
+	color: transparent;
+	background-color:#FEFAFD;
+	-webkit-background-clip: text;
+	background-clip: text;
+	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+
+  }
+
+  .xbutton::before {
+    content: "";
+    display: block;
+    height: 0.25rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 7.5rem);
+    background: #fff;
+    border-radius: 100%;
+    
+    opacity: 0.7;
+    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+  }
+  
+  .xbutton::after {
+    content: "";
+    display: block;
+    height: 0.25rem;
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 7.5rem);
+    background: #fff;
+    border-radius: 100%;
+    
+    filter: blur(1px);
+    opacity: 0.05;
+    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+  }
+
+  #toggle {
+    min-height: 4rem;
+    margin: 20px 0 20px 10px;
+  }
+
+  #links {
+    margin-top: 80px
+  }
 
 .song-card {
   background-color: rgba(255, 255, 255, 0.5);
@@ -182,4 +271,9 @@ a {
   background-size: 100% 100%;
   background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
   background-image: radial-gradient(18% 28% at 24% 50%, #CEFAFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #D3FF6D9C 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #6DFFAEF5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #4C00FCFF 100%);
+}
+
+.card-box {
+  bottom: 10px;
+  display: flex;
 }
