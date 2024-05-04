@@ -185,7 +185,7 @@ h1{
   }
 
 .song-card {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.377);
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -209,10 +209,12 @@ h1{
 }
 
 
-.song-card:hover {
+/* .song-card:hover {
   background-color: #f9f9f9; 
+} */
+.song-card:hover {
+  background-color: rgba(34, 28, 28, 0.4); 
 }
-
 
 .song-card:hover .delete-btn {
   background-color: #ff3333;
