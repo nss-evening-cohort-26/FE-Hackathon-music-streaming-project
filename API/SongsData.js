@@ -51,12 +51,14 @@ const getSongsByArtist = (artistId) => new Promise((resolve, reject) => {
 });
 
 // search by name, artist, genre
-const searchSongs = (searchInput) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/api/songs/search/${searchInput}`, {
-    method: 'GET',
+const searchSongs = (searchObj) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/search/${searchObj.playlistId}/${searchObj.searchInput}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(searchObj),
+
   }).then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);

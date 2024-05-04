@@ -17,7 +17,6 @@ export default function ShowPlaylists() {
 
   useEffect(() => {
     getAllUsersPlaylists();
-    console.warn(getUserPlaylists(user.id));
   }, []);
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { getAllPlaylists } from '../api/PlaylistData';
@@ -35,7 +36,7 @@ function Home() {
         <div className="card-box position-absolute onTop flex flex-col text-black">
           <h1>Currently obsessed</h1>
           {playlists.slice(0, 1).map((p) => (
-            <PlaylistCard playlistObj={p} />
+            <PlaylistCard key={playlists[1].id} playlistObj={p} onUpdate={getAllPlaylists} />
           ))}
         </div>
       </div>

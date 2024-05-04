@@ -13,7 +13,7 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
 
   const payload = {
     playlistId: playlist_id,
-    songId: songObj.id,
+    songId: songObj?.id,
   };
 
   const addSongToPlaylist = () => {
@@ -25,7 +25,7 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
   };
 
   const deleteSongFromPlayllist = () => {
-    if (window.confirm(`Sure you want to delete ${songObj.name} from your playlist?`)) {
+    if (window.confirm(`Sure you want to delete ${songObj?.name} from your playlist?`)) {
       removeSong(payload).then(() => onUpdate());
     }
   };
@@ -34,10 +34,10 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
     <>
       <div className="song-card">
         <div className="song-info">
-          <h3 className="song-name">{songObj.name}</h3>
-          <p className="song-artist">{songObj.artistName}</p>
+          <h3 className="song-name">{songObj?.name}</h3>
+          <p className="song-artist">{songObj?.artistName}</p>
           <p className="song-details">
-            <strong>Genre:</strong> {songObj.genreName} | <strong>Year: {songObj.year}</strong>  | <strong>Duration:</strong> {songObj.duration}
+            <strong>Genre:</strong> {songObj?.genreName} | <strong>Year: {songObj?.year}</strong>  | <strong>Duration:</strong> {songObj?.duration}
           </p>
         </div>
         {router.asPath === `/playlist/${playlist_id}` ? <button type="button" className="delete-btn" onClick={deleteSongFromPlayllist}>Delete</button> : <button type="button" className="delete-btn" onClick={addSongToPlaylist}>Add</button>}
