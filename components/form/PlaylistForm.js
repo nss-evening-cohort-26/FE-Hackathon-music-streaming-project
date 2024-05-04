@@ -76,7 +76,7 @@ export default function PlaylistForm({ playObj, onUpdate }) {
           <Form.Check
             className="text-black mt-5"
             type="switch"
-            label="Is this your favorite Playlist?"
+            label="Is this a favorite Playlist?"
             name="isFavorite"
             checked={formInput.isFavorite}
             onChange={(e) => {

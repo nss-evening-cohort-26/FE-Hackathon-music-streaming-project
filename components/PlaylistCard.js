@@ -24,7 +24,7 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
   });
 
   return (
-    <Card style={{ width: '18rem', margin: '20px 20px' }}>
+    <Card className="song-card" style={{ width: '18rem', margin: '20px 20px' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px' }} />
       <Card.Body>
         <Card.Title>{playlistObj.name}</Card.Title>
