@@ -5,22 +5,37 @@ import Link from 'next/link';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import PlaylistCard from '../components/PlaylistCard';
-import { getFavoritePlaylists, getUserPlaylists } from '../api/PlaylistData';
+import { getUserPlaylists } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function ShowPlaylists() {
   const [playlists, setPlaylists] = useState([]);
+  const [filter, setFilter] = useState('all');
 
   const { user } = useAuth();
 
   const getAllUsersPlaylists = () => {
-    getUserPlaylists(user.id).then(setPlaylists);
+    getUserPlaylists(user.id).then((data) => {
+      const filteredData = filter === 'favorites' ? data.filter((p) => p.isFavorite) : data;
+      setPlaylists(filteredData);
+    });
   };
 
-  const getFavoritePlaylist = () => {
-    getFavoritePlaylists(user.id).then(setPlaylists);
-    console.warn('fav', getFavoritePlaylists(user.id));
-  };
+  // const getAllUsersPlaylists = () => {
+  //   getUserPlaylists(user.id).then((data) => {
+  //     if (filter === 'favorites') {
+  //       setPlaylists(data.filter((playlist) => playlist.isFavorite));
+  //       console.warn(data.filter((playlist) => playlist.isFavorite), 'fav');
+  //     } else {
+  //       setPlaylists(data);
+  //     }
+  //   });
+  // };
+
+  // const getFavoritePlaylist = () => {
+  //   getFavoritePlaylists(user.id).then(setPlaylists);
+  //   console.warn('fav', getFavoritePlaylists(user.id));
+  // };
 
   const newestAndOldest = (sortBy) => {
     getUserPlaylists(user.id)
@@ -37,12 +52,11 @@ export default function ShowPlaylists() {
 
   useEffect(() => {
     getAllUsersPlaylists();
-    console.warn(getUserPlaylists(user.id));
-  }, []);
+  }, [filter]);
 
   return (
     <div style={{ marginLeft: '100px', width: '80%' }}>
-      <div className="text-center"> {/* Wrapper div for centering */}
+      <div className="text-center">
 
         <Link href="/playlist/new" passHref>
           <Button
@@ -58,8 +72,8 @@ export default function ShowPlaylists() {
           </Button>
         </Link>
         <DropdownButton id="dropdown-basic-button" title="Filter">
-          <Dropdown.Item href="#/my-playlists" onClick={getAllUsersPlaylists}>All Playlist</Dropdown.Item>
-          <Dropdown.Item href="#/favorite" onClick={getFavoritePlaylist}>Favorite Playlist</Dropdown.Item>
+          <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlist</Dropdown.Item>
+          <Dropdown.Item href="#/favorites" onClick={() => setFilter('favorites')}>Favorite Playlist</Dropdown.Item>
           <Dropdown.Item href="#/newest" onClick={() => newestAndOldest('newest')}>Newest</Dropdown.Item>
           <Dropdown.Item href="#/oldest" onClick={() => newestAndOldest('oldest')}>Oldest</Dropdown.Item>
         </DropdownButton>
