@@ -55,9 +55,8 @@ export default function ShowPlaylists() {
   }, [filter]);
 
   return (
-    <div style={{ marginLeft: '100px', width: '80%' }}>
-      <div className="text-center">
-
+    <div style={{ width: '80%' }}>
+      <div className="text-center"> {/* Wrapper div for centering */}
         <Link href="/playlist/new" passHref>
           <Button
             className="info"

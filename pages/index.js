@@ -1,43 +1,45 @@
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+import { useEffect, useState } from 'react';
+import { getAllPlaylists } from '../api/PlaylistData';
+import PlaylistCard from '../components/PlaylistCard';
 
 function Home() {
-  const { user } = useAuth();
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    getAllPlaylists(1).then(setPlaylists);
+  }, []);
 
   return (
-    <div
-      className="console-box text-center d-flex flex-column justify-content-center align-content-center"
-    >
-      <div className="console audio">
-        <svg
-          width="700"
-          height="500"
-          viewBox="0 0 1006 723"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ filter: 'drop-shadow(10px 0 10px #2C2C2C)' }}
-        >
-          <path d="M43.2817 717.194L872.302 721.568C893.318 721.679 911.181 706.239 914.113 685.427L1003.75 49.1104C1007.51 22.4419 985.502 -0.815671 958.665 1.40155C690.738 23.5369 519.838 38.281 204.984 71.7967C188.111 73.5928 173.911 85.384 169.104 101.661L3.22337 663.298C-4.69844 690.12 15.315 717.047 43.2817 717.194Z" fill="url(#paint0_radial_4_2)" stroke="#2B2C34" strokeWidth=".5" />
-          <defs>
-            <radialGradient id="paint0_radial_4_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(566.474 381.83) rotate(98.1449) scale(359.311 522.873)">
-              <stop stopColor="white" />
-              <stop offset="1" stopColor="#787A91" />
-            </radialGradient>
-          </defs>
-        </svg>
+    <>
+      <div className="flex flex-col pt-3">
+        <img
+          style={{
+            alignSelf: 'self-start', zIndex: '6', width: '30em', filter: 'drop-shadow(0 2px 2px white',
+          }}
+          alt="Y2Play logo"
+          src="./logoclear.png"
+        />
+        <img
+          style={{
+            rotate: '45deg', position: 'absolute', right: '30%', bottom: '30%', filter: 'drop-shadow(30px 10px 8px #242124)',
+          }}
+          alt="big blob"
+          src="./blob.png"
+        />
+        <Button style={{ position: 'absolute', bottom: '25%', left: '20%' }} className="xbutton audio">Make a playlist</Button>
       </div>
-      <div className="text-box">
-
-        <h1>Hello {user.fbUser.displayName}! </h1>
-        <p>Your Bio: {user.bio}</p>
-        <p>Click the button below to logout!</p>
-        <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-          Sign Out
-        </Button>
+      <div>
+        <img style={{ width: '100px', rotate: '15deg', filter: 'drop-shadow(10px 10px 6px #242124)' }} alt="small blob" src="./blob.png" />
+        <img style={{ width: '300px', rotate: '-30deg', filter: 'drop-shadow(0 60px 20px #242124)' }} alt="blob" src="./blob.png" />
+        <div className="card-box position-absolute onTop flex flex-col text-black">
+          <h1>Currently obsessed</h1>
+          {playlists.slice(0, 1).map((p) => (
+            <PlaylistCard playlistObj={p} />
+          ))}
+        </div>
       </div>
-
-    </div>
+    </>
   );
 }
 

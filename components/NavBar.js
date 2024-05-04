@@ -1,13 +1,40 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import { IoMdMenu } from 'react-icons/io';
 
 export default function NavBar() {
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => {
+    if (open) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  };
+
   return (
-    <>
+    <div id="menu">
+      <Button
+        id="toggle"
+        className="xbutton"
+        type="button"
+        onClick={toggleOpen}
+        style={{ zIndex: '20' }}
+      >
+        {!open
+          ? (
+            <IoMdMenu
+              style={{ filter: 'drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1))' }}
+            />
+          )
+          : <span>⬅</span>}
+      </Button>
       <div
         id="nav"
-        className="fixed inset-y-0 z-10 flex w-60"
+        className={open ? 'open fixed inset-y-0 z-10 flex flex-col align-items-start' : 'hidden fixed inset-y-0 z-10 flex flex-col align-items-start'}
+
       >
         <svg
           id="bar"
@@ -25,22 +52,19 @@ export default function NavBar() {
           </defs>
           <path d="M 268.487 0 H 0 V 800 H 247.32 Q 400 735 311 643 Q 120 446 268.487 367.647 Q 593 190 268.487 0 Z" fill="url(#gradient)" stroke="#2C2C2C" strokeWidth="3" strokeOpacity="0.4" />
         </svg>
-        <div className="z-10 flex flex-col flex-1">
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2 mt-2">
-            <Link style={{ color: 'black' }} passHref href="/">Y2Play</Link>
-          </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+        <div id="links" className="z-10 flex flex-col flex-1 p-1">
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/">Home</Link>
           </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/playlists">Playlists</Link>
           </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-2">
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
           </div>
         </div>
 
       </div>
-    </>
+    </div>
   );
 }
