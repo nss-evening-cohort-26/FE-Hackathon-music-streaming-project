@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { IoMdMenu } from 'react-icons/io';
+import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -61,6 +62,11 @@ export default function NavBar() {
           </div>
           <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
+          </div>
+          <div className="audio flex justify-between flex-shrink-0 w-64 p-3">
+            <Button variant="danger" onClick={signOut}>
+              Sign Out
+            </Button>
           </div>
         </div>
 

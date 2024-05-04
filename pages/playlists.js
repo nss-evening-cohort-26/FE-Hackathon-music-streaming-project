@@ -70,7 +70,7 @@ export default function ShowPlaylists() {
             Add A Playlist
           </Button>
         </Link>
-        <DropdownButton id="dropdown-basic-button" title="Filter">
+        <DropdownButton id="dropdown-basic-button" title="Filter" style={{ marginLeft: '80%' }}>
           <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlist</Dropdown.Item>
           <Dropdown.Item href="#/favorites" onClick={() => setFilter('favorites')}>Favorite Playlist</Dropdown.Item>
           <Dropdown.Item href="#/newest" onClick={() => newestAndOldest('newest')}>Newest</Dropdown.Item>
