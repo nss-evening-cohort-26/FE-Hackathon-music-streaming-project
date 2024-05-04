@@ -13,6 +13,8 @@ export default function SongsNotInPlaylist() {
   const router = useRouter();
   const { playlist_id } = router.query;
 
+  console.warn(router);
+
   const getAllSongsNotInPlaylist = () => {
     getSongsNotOnPlaylist(playlist_id).then(setSongsNotInPlaylist);
   };
