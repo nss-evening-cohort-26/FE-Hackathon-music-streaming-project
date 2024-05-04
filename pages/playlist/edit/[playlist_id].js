@@ -16,7 +16,6 @@ export default function EditPlaylist() {
   useEffect(() => {
     getPlaylistById(playlist_id, user.id).then(setEditItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.warn(editItem);
   }, [playlist_id]);
 
   return (

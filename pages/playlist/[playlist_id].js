@@ -17,7 +17,6 @@ export default function PlaylistDetails() {
 
   const getPlayListSongs = () => {
     getPlaylistById(playlist_id, user.id).then(setPlaylistDetail);
-    console.warn(getPlaylistById(playlist_id, user.id));
   };
 
   const deleteThisPlaylist = () => {
@@ -28,7 +27,6 @@ export default function PlaylistDetails() {
 
   useEffect(() => {
     getPlayListSongs();
-    console.warn(playlist_id);
     return () => {
       setPlaylistDetail({});
     };
@@ -44,19 +42,26 @@ export default function PlaylistDetails() {
             <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 25px' }} onClick={deleteThisPlaylist}>Delete</Button>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <Button
-              variant="primary"
-              style={{
-                borderRadius: '20px', padding: '3px 25px', fontSize: '20px', height: '45px',
-              }}
-            >Add A Song
-            </Button>
+            <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
+              <Button
+                variant="primary"
+                style={{
+                  borderRadius: '20px', padding: '3px 25px', fontSize: '20px', height: '45px',
+                }}
+              >Add A Song
+              </Button>
+            </Link>
           </div>
         </div>
-        {playlistDetail.songs?.map((songObject) => (
+        {playlistDetail.songs?.length === 0 ? (
+          <h1 style={{
+            fontSize: '50px', marginTop: '40px', textAlign: 'center', color: '#d72121',
+          }}
+          >You Have No Songs in this Playlist
+          </h1>
+        ) : playlistDetail.songs?.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getPlayListSongs} />
         ))}
-
       </div>
     </>
   );
