@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { getSongsNotOnPlaylist } from '../../api/SongsData';
 import PlaylistDetail from '../../components/PlaylistDetail';
+import SearchBar from '../../components/SearchBar';
 
 export default function SongsNotInPlaylist() {
   const [songsNotInPlaylist, setSongsNotInPlaylist] = useState([]);
@@ -23,7 +24,7 @@ export default function SongsNotInPlaylist() {
 
   return (
     <div>
-      <div className="text-center" style={{ marginLeft: '100px', width: '80%' }}>
+      <div className="text-center" style={{ marginLeft: '100px', marginBottom: '20px', width: '80%' }}>
         <Link href={`/playlist/${playlist_id}`} passHref>
           <Button
             className="info"
@@ -38,6 +39,7 @@ export default function SongsNotInPlaylist() {
           </Button>
         </Link>
       </div>
+      <SearchBar />
       <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
         {songsNotInPlaylist.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
