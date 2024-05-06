@@ -27,9 +27,6 @@ export default function PlaylistDetails() {
 
   useEffect(() => {
     getPlayListSongs();
-    return () => {
-      setPlaylistDetail({});
-    };
   }, [playlist_id]);
 
   return (
