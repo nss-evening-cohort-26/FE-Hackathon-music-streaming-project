@@ -10,7 +10,7 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <Form className="d-flex" style={{ width: '80%', margin: '0 auto' }}>
+    <Form className="d-flex" style={{ width: '60%', margin: '0 auto' }}>
       <Form.Control
         type="search"
         placeholder="Search"

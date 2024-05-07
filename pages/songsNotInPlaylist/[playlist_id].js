@@ -42,6 +42,7 @@ export default function SongsNotInPlaylist() {
             className="info"
             style={{
               marginTop: '15px',
+              marginBottom: '20px',
               backgroundColor: '#B6A39E',
               color: 'black',
               border: 'none',
@@ -52,7 +53,7 @@ export default function SongsNotInPlaylist() {
         </Link>
       </div>
       <SearchBar onSearch={filterItems} />
-      <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
+      <div className="d-flex flex-wrap" style={{ margin: '0 auto' }}>
         {searchResults.length === 0 ? (<h1 style={{ color: 'firebrick', textAlign: 'center' }}>No results are found</h1>) : searchResults.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
         ))}
