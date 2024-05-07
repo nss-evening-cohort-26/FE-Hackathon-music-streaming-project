@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-lone-blocks */
 import React from 'react';
-
+import { MdDeleteForever } from 'react-icons/md';
+import { IoAddCircleSharp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { addSong, removeSong } from '../api/SongsData';
@@ -31,18 +32,20 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
   };
 
   return (
-    <>
-      <div className="song-card">
+    <div className="flex flex-col">
+      <div className="song-card" style={{ minWidth: '30em', alignContent: 'left' }}>
         <div className="song-info">
-          <h3 className="song-name">{songObj?.name}</h3>
-          <p className="song-artist">{songObj?.artistName}</p>
+          <h3 className="song-name">{songObj.name}</h3>
+          <p className="song-artist">{songObj.artist?.name}</p>
           <p className="song-details">
-            <strong>Genre:</strong> {songObj?.genreName} | <strong>Year: {songObj?.year}</strong>  | <strong>Duration:</strong> {songObj?.duration}
+            <strong>Genre:</strong> {songObj.genre?.name} | <strong>Year:</strong> {songObj.year}  | <strong>Duration:</strong> {songObj.duration}
           </p>
         </div>
-        {router.asPath === `/playlist/${playlist_id}` ? <button type="button" className="delete-btn" onClick={deleteSongFromPlayllist}>Delete</button> : <button type="button" className="delete-btn" onClick={addSongToPlaylist}>Add</button>}
+        <div className="corner">
+          {router.asPath === `/playlist/${playlist_id}` ? <button aria-label="delete" type="button" className="delete-btn" onClick={deleteSongFromPlayllist}><MdDeleteForever /></button> : <button type="button" aria-label="add" className="delete-btn" onClick={addSongToPlaylist}><IoAddCircleSharp /></button>}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -50,8 +53,14 @@ PlaylistDetail.propTypes = {
   songObj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
-    artistName: PropTypes.string,
-    genreName: PropTypes.string,
+    artist: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+    genre: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
     year: PropTypes.number,
     duration: PropTypes.string,
   }).isRequired,

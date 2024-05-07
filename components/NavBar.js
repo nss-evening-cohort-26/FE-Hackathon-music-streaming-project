@@ -53,23 +53,23 @@ export default function NavBar() {
           </defs>
           <path d="M 268.487 0 H 0 V 800 H 247.32 Q 400 735 311 643 Q 120 446 268.487 367.647 Q 593 190 268.487 0 Z" fill="url(#gradient)" stroke="#2C2C2C" strokeWidth="3" strokeOpacity="0.4" />
         </svg>
-        <div id="links" className="z-10 flex flex-col flex-1 p-1">
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
+        <div id="links" className="z-10 flex flex-col flex-1 p-1 justify-between">
+          <div className="audio flex flex-col flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/">Home</Link>
-          </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
+            {/* </div>
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3"> */}
             <Link style={{ color: 'black' }} passHref href="/playlists">Playlists</Link>
-          </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3">
+            {/* </div>
+          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3"> */}
             <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
+            {/* </div> */}
           </div>
-          <div className="audio flex justify-between flex-shrink-0 w-64 p-3">
+          <div className="audio w-64 p-3 mb-4 jelly">
             <Button variant="danger" onClick={signOut}>
               Sign Out
             </Button>
           </div>
         </div>
-
       </div>
     </div>
   );

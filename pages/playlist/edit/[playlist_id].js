@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { getPlaylistById } from '../../../api/PlaylistData';
 import { useAuth } from '../../../utils/context/authContext';
 import PlaylistForm from '../../../components/form/PlaylistForm';
+import Consolebg from '../../../components/Consolebg';
 
 export default function EditPlaylist() {
   const [editItem, setEditItem] = useState({});
@@ -19,7 +20,8 @@ export default function EditPlaylist() {
   }, [playlist_id]);
 
   return (
-    <div>
+    <div className="flex flex-col justify-content-center align-items-center">
+      <Consolebg />
       <PlaylistForm playObj={editItem} />
     </div>
   );

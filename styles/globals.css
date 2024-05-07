@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import '../src/output.css';
-@import url('https://fonts.googleapis.com/css2?family=Audiowide');
-@import url('https://fonts.googleapis.com/css2?family=Armata');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Armata&family=Cute+Font');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,10 +15,25 @@ body {
     background-size: 100% 100%;
     background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
     background-image: url("/waves.jpg");
-
     /* background-image: radial-gradient(18% 28% at 24% 50%, #FFCEF6FF 7%, #073AFF00 100%),radial-gradient(30% 57% at 29% 59%, #F2B6FAFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 8% 75%, #AEA2FEFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #F8FBFDFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFECF3FF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #E2E6FBFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #FBBEFC9C 24%, #073AFF00 100%),radial-gradient(70% 73% at 62% 77%, #3B58FDF5 9%, #073AFF00 100%),radial-gradient(54% 112% at 67% 38%, #FE9FB8F5 34%, #073AFF00 100%),linear-gradient(125deg, #FC6FD6FF 1%, #0223FCFF 100%); */
   height: 100%;
   
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 4;
+  background-color: #f897d5;
+  opacity: 75%;
+  width: 100vw;
+}
+
+#overlay {
+  opacity: 75%;
+  height: 100vh;
+
 }
 
 a {
@@ -50,33 +65,37 @@ a {
   font-family: Audiowide;
 }
 
+.cute {
+  font-family: Cute Font;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-self: center;
   height: 100vh;
+  width: 100%;
 }
 
 .pill {
   background-size: 100% 100%;
   background-position: 0px 0px,0px 0px;
-  background-image: radial-gradient(#FFFFFF 0%, #787A91 100%); 
+  background-image: radial-gradient(#f9c8fd 0%, #3e0d5a 100%); 
   border-radius: 500px;
   padding: 40px;
-  border:#484950 solid 2px;
-  box-shadow: inset 0 0 10px #000000;
+  border:#3e0d5a solid 2px;
+  box-shadow: inset 0 0 10px #3e0d5a;
 
 }
 
 h1{
-  font-size: 30px;
+  font-size: 40px;
   margin-bottom: 20px;
   font-family: Audiowide;
+  text-shadow: 0 0 5px 5px white
 }
 
 .blob {
-  width: 250px;
-  height: 300px;
   background-image: radial-gradient(50% 50% at 50% 50%, #040000FF 10%, #04000003 100%);
 }
 
@@ -190,9 +209,13 @@ h1{
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   transition: background-color 0.3s ease-in-out; 
   margin: 20px;
+  flex: 0 1 25%;
+}
+
+.list {
+  min-width: '30em',
 }
 
 .song-name,
@@ -239,8 +262,9 @@ h1{
 
 .song-artist {
   font-size: 14px;
-  color: #666;
+  color: #333;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .song-details {
@@ -249,16 +273,17 @@ h1{
 }
 
 .delete-btn {
-  background-color: transparent;
   color: #000;
-  border: 1px solid #ff3333;
-  border-radius: 5px;
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 30px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
+.corner {
+  display: flex;
+  justify-content: right;
+}
 
 .delete-btn:hover {
   background-color: #ff3333;
