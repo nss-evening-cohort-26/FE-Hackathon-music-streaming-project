@@ -40,7 +40,7 @@ export default function SongsNotInPlaylist() {
           </Button>
         </Link>
       </div>
-      <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
+      <div className="d-flex flex-wrap" style={{ marginLeft: '100px' }}>
         {songsNotInPlaylist.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
         ))}

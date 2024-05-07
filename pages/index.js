@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { getAllPlaylists } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 import PlaylistCard from '../components/PlaylistCard';
@@ -42,7 +43,9 @@ function Home() {
           src="./blob.png"
         />
         <img className="blob2" style={{ filter: 'drop-shadow(0 60px 20px #242124)' }} alt="blob" src="./blob.png" />
-        <Button className="xbutton audio make">Make a playlist</Button>
+        <Link passHref href="/playlist/new">
+          <Button className="xbutton audio make">Make a playlist</Button>
+        </Link>
         <div className="fave flex flex-col text-black">
           <h1>Currently obsessed</h1>
           <div className="flex flex-wrap favecard">
