@@ -6,22 +6,33 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { getSongsNotOnPlaylist } from '../../api/SongsData';
 import PlaylistDetail from '../../components/PlaylistDetail';
+import SearchBar from '../../components/SearchBar';
 
 export default function SongsNotInPlaylist() {
   const [songsNotInPlaylist, setSongsNotInPlaylist] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   const router = useRouter();
   const { playlist_id } = router.query;
 
-  console.warn(router);
+  const getAllSongsNotInPlaylist = async () => {
+    const fetchedSongs = await getSongsNotOnPlaylist(playlist_id);
+    setSongsNotInPlaylist(fetchedSongs);
+    setSearchResults(fetchedSongs);
+  };
 
-  const getAllSongsNotInPlaylist = () => {
-    getSongsNotOnPlaylist(playlist_id).then(setSongsNotInPlaylist);
+  const filterItems = (query) => {
+    if (!query) {
+      getAllSongsNotInPlaylist();
+    } else {
+      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query));
+      setSearchResults(filtered);
+    }
   };
 
   useEffect(() => {
     getAllSongsNotInPlaylist();
-  }, []);
+  }, [router.query]);
 
   return (
     <div>
@@ -31,6 +42,7 @@ export default function SongsNotInPlaylist() {
             className="info"
             style={{
               marginTop: '15px',
+              marginBottom: '20px',
               backgroundColor: '#B6A39E',
               color: 'black',
               border: 'none',
@@ -40,9 +52,10 @@ export default function SongsNotInPlaylist() {
           </Button>
         </Link>
       </div>
-      <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
-        {songsNotInPlaylist.map((songObject) => (
-          <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
+      <SearchBar onSearch={filterItems} />
+      <div className="d-flex flex-wrap" style={{ margin: '0 auto' }}>
+        {searchResults.length === 0 ? (<h1 style={{ color: 'firebrick', textAlign: 'center' }}>No results are found</h1>) : searchResults.map((songObject) => (
+          <PlaylistDetail key={songObject.id} detailObj={{ songObj: songObject, artistObj: songObject, genreObj: songObject }} onUpdate={getAllSongsNotInPlaylist} />
         ))}
       </div>
     </div>
