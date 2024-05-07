@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { getSongsNotOnPlaylist, searchSongs } from '../../api/SongsData';
+import { getSongsNotOnPlaylist } from '../../api/SongsData';
 import PlaylistDetail from '../../components/PlaylistDetail';
 import SearchBar from '../../components/SearchBar';
 
@@ -13,28 +13,26 @@ export default function SongsNotInPlaylist() {
   const [searchResults, setSearchResults] = useState([]);
 
   const router = useRouter();
-  const { playlist_id, search } = router.query;
-  console.warn(router);
+  const { playlist_id } = router.query;
 
-  const getAllSongsNotInPlaylist = () => {
-    getSongsNotOnPlaylist(playlist_id).then(setSongsNotInPlaylist);
+  const getAllSongsNotInPlaylist = async () => {
+    const fetchedSongs = await getSongsNotOnPlaylist(playlist_id);
+    setSongsNotInPlaylist(fetchedSongs);
+    setSearchResults(fetchedSongs);
   };
 
-  const getSearchResults = async () => {
-    const payload = {
-      playlistId: playlist_id,
-      searchInput: search.toLowerCase(),
-    };
-    console.warn(payload);
-    // console.warn(payload);
-    const filteredResults = await searchSongs(payload);
-    setSearchResults(filteredResults);
+  const filterItems = (query) => {
+    if (!query) {
+      getAllSongsNotInPlaylist();
+    } else {
+      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query));
+      setSearchResults(filtered);
+    }
   };
 
   useEffect(() => {
     getAllSongsNotInPlaylist();
-    getSearchResults();
-  }, []);
+  }, [router.query]);
 
   return (
     <div>
@@ -53,16 +51,9 @@ export default function SongsNotInPlaylist() {
           </Button>
         </Link>
       </div>
-      <SearchBar onSearch={getSearchResults} />
+      <SearchBar onSearch={filterItems} />
       <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
-        {
-        (searchResults.map((songObject) => (
-          <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getSearchResults} />)))
-      }
-      </div>
-      <div style={{ borderTop: '5px solid black', width: '93%' }} />
-      <div className="d-flex flex-wrap" style={{ marginLeft: '0 auto' }}>
-        {songsNotInPlaylist.map((songObject) => (
+        {searchResults.length === 0 ? (<h1 style={{ color: 'firebrick', textAlign: 'center' }}>No results are found</h1>) : searchResults.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
         ))}
       </div>
