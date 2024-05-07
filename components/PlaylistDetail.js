@@ -14,7 +14,7 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
 
   const payload = {
     playlistId: playlist_id,
-    songId: songObj.id,
+    songId: songObj?.id,
   };
 
   const addSongToPlaylist = () => {
@@ -26,7 +26,7 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
   };
 
   const deleteSongFromPlayllist = () => {
-    if (window.confirm(`Sure you want to delete ${songObj.name} from your playlist?`)) {
+    if (window.confirm(`Sure you want to delete ${songObj?.name} from your playlist?`)) {
       removeSong(payload).then(() => onUpdate());
     }
   };

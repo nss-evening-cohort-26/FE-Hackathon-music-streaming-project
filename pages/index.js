@@ -48,11 +48,9 @@ function Home() {
         </Link>
         <div className="fave flex flex-col text-black">
           <h1>Currently obsessed</h1>
-          <div className="flex flex-wrap favecard">
-            {playlists.slice(0, 3).map((p) => (
-              <PlaylistCard playlistObj={p} />
-            ))}
-          </div>
+          {playlists.slice(0, 1).map((p) => (
+            <PlaylistCard key={p.id} playlistObj={p} onUpdate={getAllPlaylists} />
+          ))}
         </div>
       </div>
     </>
