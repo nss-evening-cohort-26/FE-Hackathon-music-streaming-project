@@ -214,6 +214,22 @@ h1{
   flex: 0 1 25%;
 }
 
+.playlist-card {
+  background-color: rgba(255, 255, 255, 0.377);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out; 
+  margin: 20px;
+  flex: 0 1 25%;
+}
+
+.playlist-card:hover {
+  color: #fff; 
+}
+
+
 .list {
   min-width: '30em',
 }
