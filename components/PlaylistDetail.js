@@ -20,8 +20,6 @@ export default function PlaylistDetail({
     songId: songObj?.id,
   };
 
-  console.warn('songObj', songObj);
-
   const addSongToPlaylist = () => {
     addSong(payload).then(() => {
       alert('Song successfully added!');
@@ -82,14 +80,17 @@ PlaylistDetail.propTypes = {
     duration: PropTypes.string,
     artist: PropTypes.shape({
       name: PropTypes.string,
-    }).isRequired,
+    }),
     genre: PropTypes.shape({
       name: PropTypes.string,
-    }).isRequired,
+    }),
   }).isRequired,
-
   onUpdate: PropTypes.func.isRequired,
   getUserId: PropTypes.shape({
-    userId: PropTypes.number.isRequired,
-  }).isRequired,
+    userId: PropTypes.number,
+  }),
+};
+
+PlaylistDetail.defaultProps = {
+  getUserId: {},
 };

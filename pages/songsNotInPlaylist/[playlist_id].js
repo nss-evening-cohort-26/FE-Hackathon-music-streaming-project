@@ -15,8 +15,6 @@ export default function SongsNotInPlaylist() {
   const router = useRouter();
   const { playlist_id } = router.query;
 
-  console.warn('songsNotInPlaylist', songsNotInPlaylist);
-
   const getAllSongsNotInPlaylist = async () => {
     const fetchedSongs = await getSongsNotOnPlaylist(playlist_id);
     setSongsNotInPlaylist(fetchedSongs);
@@ -38,7 +36,6 @@ export default function SongsNotInPlaylist() {
     getAllSongsNotInPlaylist();
   }, [router.query]);
 
-  console.warn('getSongsNotOnPlaylist', getSongsNotOnPlaylist(playlist_id));
   return (
     <div>
       <div className="text-center" style={{ marginLeft: '100px', width: '80%' }}>

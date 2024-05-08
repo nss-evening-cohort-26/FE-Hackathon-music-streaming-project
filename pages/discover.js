@@ -15,7 +15,6 @@ export default function Discover() {
 
   useEffect(() => {
     getAllUsersPlaylists();
-    console.warn(user);
   }, []);
 
   return (

@@ -40,7 +40,6 @@ export default function PlaylistForm({ playObj, onUpdate }) {
       createPlaylist(payload, user.id)?.then(() => {
         router.push('/playlists');
         onUpdate();
-        console.warn(payload);
       });
     }
   };
