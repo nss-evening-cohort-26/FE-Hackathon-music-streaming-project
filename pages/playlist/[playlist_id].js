@@ -38,11 +38,15 @@ export default function PlaylistDetails() {
       }}
       >
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
+        {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
           <Link href={`/playlist/edit/${playlist_id}`} passHref><Button variant="success" style={{ borderRadius: '20px', padding: '5px 15px', marginRight: '5px' }}><RiEditLine /></Button></Link>
           <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 15px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
+        )}
+
       </div>
+      {playlistDetail.userId === user.id && (
       <div style={{ display: 'flex', alignItems: 'flex-end' }}>
         <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
           <Button
@@ -54,15 +58,16 @@ export default function PlaylistDetails() {
           </Button>
         </Link>
       </div>
+      )}
       <div className="flex flex-col flex-wrap">
         {playlistDetail.songs?.length === 0 ? (
           <h1 style={{
             marginTop: '40px', color: '#d72121', display: 'flex', flexWrap: 'wrap', textAlign: 'center',
           }}
-          >You Have No Songs in this Playlist
+          >There are no songs in this playlist
           </h1>
         ) : playlistDetail.songs?.map((songObject) => (
-          <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getPlayListSongs} />
+          <PlaylistDetail key={songObject.id} songObj={songObject} getUserId={playlistDetail} onUpdate={getPlayListSongs} />
         ))}
       </div>
     </div>

@@ -63,6 +63,7 @@ export default function NavBar() {
           <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3"> */}
             <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
             {/* </div> */}
+            <Link style={{ color: 'black' }} passHref href="/discover">Discover</Link>
           </div>
           <div className="audio w-64 p-3 mb-4 jelly">
             <Button variant="danger" onClick={signOut}>

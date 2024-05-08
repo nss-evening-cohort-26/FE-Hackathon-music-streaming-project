@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';

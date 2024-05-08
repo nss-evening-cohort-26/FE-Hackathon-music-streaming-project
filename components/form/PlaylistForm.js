@@ -10,6 +10,7 @@ const initialValue = {
   name: '',
   imageUrl: '',
   isFavorite: false,
+  is_public: false,
 
 };
 
@@ -39,7 +40,6 @@ export default function PlaylistForm({ playObj, onUpdate }) {
       createPlaylist(payload, user.id)?.then(() => {
         router.push('/playlists');
         onUpdate();
-        console.warn(payload);
       });
     }
   };
@@ -87,21 +87,21 @@ export default function PlaylistForm({ playObj, onUpdate }) {
             }}
           />
         </Form.Group>
-        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
             className="text-white mt-5"
             type="switch"
-            label="Do you want to make this team public?"
+            label="Do you want to make this playlist public?"
             name="public"
-            checked={input.is_public}
+            checked={formInput.public}
             onChange={(e) => {
-              setInput((prevState) => ({
+              setFormInput((prevState) => ({
                 ...prevState,
                 public: e.target.checked,
               }));
             }}
           />
-        </Form.Group> */}
+        </Form.Group>
         <Button className="xbutton" style={{ fontSize: '20px', marginTop: '15px', justifySelf: 'center' }} type="submit">{playObj.id ? 'Update' : 'Create'}</Button>
       </Form>
     </div>
@@ -114,6 +114,7 @@ PlaylistForm.propTypes = {
     name: PropTypes.string,
     imageUrl: PropTypes.string,
     isFavorite: PropTypes.bool,
+    public: PropTypes.bool,
     userId: PropTypes.number,
   }),
   onUpdate: PropTypes.func.isRequired,

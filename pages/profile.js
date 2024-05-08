@@ -7,8 +7,6 @@ import { useAuth } from '../utils/context/authContext';
 export default function Profile() {
   const { user } = useAuth();
 
-  console.warn(user);
-
   // Function to manipulate the photo URL to change the size
   const getLargerPhotoUrl = (url) => {
     // Split the URL at '='
