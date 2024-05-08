@@ -19,6 +19,7 @@ export default function ShowPlaylists() {
       const filteredData = filter === 'favorites' ? data.filter((p) => p.isFavorite) : data;
       setPlaylists(filteredData);
     });
+    console.warn(getUserPlaylists(user.id));
   };
 
   // const getAllUsersPlaylists = () => {

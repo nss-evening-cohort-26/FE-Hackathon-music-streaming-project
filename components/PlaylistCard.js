@@ -9,8 +9,11 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
+import { useAuth } from '../utils/context/authContext';
 
-export default function PlaylistCard({ playlistObj, onUpdate, user }) {
+export default function PlaylistCard({ playlistObj, onUpdate }) {
+  const { user } = useAuth();
+
   const deleteThisPlaylist = () => {
     if (window.confirm(`Sure you want to delete ${playlistObj.name}?`)) {
       deletePlaylist(playlistObj.id).then(() => onUpdate());
@@ -36,7 +39,7 @@ export default function PlaylistCard({ playlistObj, onUpdate, user }) {
         }}
         >
           <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
-          {playlistObj.userId === user && (
+          {playlistObj.userId === user.id && (
           <>
             <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
               <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
@@ -58,7 +61,7 @@ PlaylistCard.propTypes = {
     isFavorite: PropTypes.bool,
     imageUrl: PropTypes.string,
     userId: PropTypes.number,
+    userName: PropTypes.string,
   }).isRequired,
-  user: PropTypes.number.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

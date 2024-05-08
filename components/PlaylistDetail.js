@@ -6,18 +6,21 @@ import { IoAddCircleSharp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { addSong, removeSong } from '../api/SongsData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function PlaylistDetail({
-  detailObj, onUpdate,
+  songObj, onUpdate, getUserId,
 }) {
   const router = useRouter();
-
+  const { user } = useAuth();
   const { playlist_id } = router.query;
 
   const payload = {
     playlistId: playlist_id,
-    songId: detailObj.songObj?.id,
+    songId: songObj?.id,
   };
+
+  console.warn('songObj', songObj);
 
   const addSongToPlaylist = () => {
     addSong(payload).then(() => {
@@ -28,7 +31,7 @@ export default function PlaylistDetail({
   };
 
   const deleteSongFromPlayllist = () => {
-    if (window.confirm(`Sure you want to delete ${detailObj.songObj?.name} from your playlist?`)) {
+    if (window.confirm(`Sure you want to delete ${songObj?.name} from your playlist?`)) {
       removeSong(payload).then(() => onUpdate());
     }
   };
@@ -37,16 +40,31 @@ export default function PlaylistDetail({
     <div className="flex flex-col">
       <div className="song-card" style={{ minWidth: '30em', alignContent: 'left' }}>
         <div className="song-info">
-          <h3 className="song-name">{detailObj.songObj.name}</h3>
-          <p className="song-artist">{router.asPath === `/songsNotInPlaylist/${playlist_id}` ? detailObj.artistObj.name : detailObj.songObj.artistName}</p>
+          <h3 className="song-name">{songObj.name}</h3>
+          <p className="song-artist">{router.asPath === `/songsNotInPlaylist/${playlist_id}` ? songObj.artist.name : songObj.artistName}</p>
           <p className="song-details">
-            <strong>Genre:</strong> {router.asPath === `/songsNotInPlaylist/${playlist_id}` ? detailObj.genreObj.name : detailObj.songObj.genreName} | <strong>Year:</strong> {detailObj.songObj.year}  | <strong>Duration:</strong> {detailObj.songObj.duration}
+            <strong>Genre:</strong> {router.asPath === `/songsNotInPlaylist/${playlist_id}` ? songObj.genre.name : songObj.genreName} | <strong>Year:</strong> {songObj.year}  | <strong>Duration:</strong> {songObj.duration}
           </p>
         </div>
         <div className="corner">
-          {router.asPath === `/playlist/${playlist_id}`
-            ? <button aria-label="delete" type="button" className="delete-btn" onClick={deleteSongFromPlayllist}><MdDeleteForever /></button>
-            : <button type="button" aria-label="add" className="add-btn" onClick={addSongToPlaylist}><IoAddCircleSharp /></button>}
+          {router.asPath === `/playlist/${playlist_id}` && getUserId.userId === user.id
+            ? (
+              <button aria-label="delete" type="button" className="delete-btn" onClick={deleteSongFromPlayllist}>
+                <MdDeleteForever />
+              </button>
+            )
+            : (
+              ''
+            )}
+          {router.asPath === `/songsNotInPlaylist/${playlist_id}`
+            ? (
+              <button type="button" aria-label="add" className="add-btn" onClick={addSongToPlaylist}>
+                <IoAddCircleSharp />
+              </button>
+            )
+            : (
+              ''
+            )}
         </div>
       </div>
     </div>
@@ -54,49 +72,24 @@ export default function PlaylistDetail({
 }
 
 PlaylistDetail.propTypes = {
-  detailObj: PropTypes.shape({
-    songObj: PropTypes.shape({
-      id: PropTypes.number,
+
+  songObj: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    artistName: PropTypes.string,
+    genreName: PropTypes.string,
+    year: PropTypes.number,
+    duration: PropTypes.string,
+    artist: PropTypes.shape({
       name: PropTypes.string,
-      artistName: PropTypes.string,
-      genreName: PropTypes.string,
-      year: PropTypes.number,
-      duration: PropTypes.string,
     }).isRequired,
-    artistObj: PropTypes.shape({
-      name: PropTypes.string,
-    }).isRequired,
-    genreObj: PropTypes.shape({
+    genre: PropTypes.shape({
       name: PropTypes.string,
     }).isRequired,
   }).isRequired,
+
   onUpdate: PropTypes.func.isRequired,
+  getUserId: PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+  }).isRequired,
 };
-
-// PlaylistDetail.propTypes = {
-//   songObj: PropTypes.shape({
-//     name: PropTypes.string,
-//     artist: PropTypes.shape({
-//       name: PropTypes.string,
-//     }),
-//     genre: PropTypes.shape({
-//       name: PropTypes.string,
-//     }),
-//     year: PropTypes.number,
-//     duration: PropTypes.string,
-
-//   }).isRequired,
-// };
-
-{ /* <Card className="mb-3">
-<Card.Body className="d-flex justify-content-between align-items-center">
-  <div>
-    <Card.Title>Song Name Placeholder</Card.Title>
-    <Card.Text>Artist Placeholder</Card.Text>
-    <Card.Text>
-      <strong>Genre:</strong> Genre Placeholder | <strong>Year:</strong> Year Placeholder | <strong>Duration:</strong> Duration Placeholder
-    </Card.Text>
-  </div>
-  <Button variant="danger">Delete</Button>
-</Card.Body>
-</Card> */ }

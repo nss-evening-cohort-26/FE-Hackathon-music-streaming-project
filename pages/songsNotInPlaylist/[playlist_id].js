@@ -15,6 +15,8 @@ export default function SongsNotInPlaylist() {
   const router = useRouter();
   const { playlist_id } = router.query;
 
+  console.warn('songsNotInPlaylist', songsNotInPlaylist);
+
   const getAllSongsNotInPlaylist = async () => {
     const fetchedSongs = await getSongsNotOnPlaylist(playlist_id);
     setSongsNotInPlaylist(fetchedSongs);
@@ -25,7 +27,9 @@ export default function SongsNotInPlaylist() {
     if (!query) {
       getAllSongsNotInPlaylist();
     } else {
-      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query));
+      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query)
+      || song.artist.name.toLowerCase().includes(query)
+      || song.genre.name.toLowerCase().includes(query));
       setSearchResults(filtered);
     }
   };
@@ -34,6 +38,7 @@ export default function SongsNotInPlaylist() {
     getAllSongsNotInPlaylist();
   }, [router.query]);
 
+  console.warn('getSongsNotOnPlaylist', getSongsNotOnPlaylist(playlist_id));
   return (
     <div>
       <div className="text-center" style={{ marginLeft: '100px', width: '80%' }}>
@@ -55,7 +60,7 @@ export default function SongsNotInPlaylist() {
       <SearchBar onSearch={filterItems} />
       <div className="d-flex flex-wrap" style={{ margin: '0 auto' }}>
         {searchResults.length === 0 ? (<h1 style={{ color: 'firebrick', textAlign: 'center' }}>No results are found</h1>) : searchResults.map((songObject) => (
-          <PlaylistDetail key={songObject.id} detailObj={{ songObj: songObject, artistObj: songObject, genreObj: songObject }} onUpdate={getAllSongsNotInPlaylist} />
+          <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />
         ))}
       </div>
     </div>
