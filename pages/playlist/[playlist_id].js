@@ -46,11 +46,11 @@ export default function PlaylistDetails() {
       <div style={{ display: 'flex', alignItems: 'flex-end' }}>
         <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
           <Button
-            className="xbutton"
+            className="xbutton cute"
             style={{
               borderRadius: '20px', padding: '5px 25px',
             }}
-          >Add A Song
+          >Add a Song
           </Button>
         </Link>
       </div>
