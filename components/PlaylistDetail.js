@@ -6,10 +6,13 @@ import { IoAddCircleSharp } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { addSong, removeSong } from '../api/SongsData';
+import { useAuth } from '../utils/context/authContext';
 
-export default function PlaylistDetail({ songObj, onUpdate }) {
+export default function PlaylistDetail({
+  songObj, onUpdate, getUserId,
+}) {
   const router = useRouter();
-
+  const { user } = useAuth();
   const { playlist_id } = router.query;
 
   const payload = {
@@ -36,13 +39,30 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
       <div className="song-card" style={{ minWidth: '30em', alignContent: 'left' }}>
         <div className="song-info">
           <h3 className="song-name">{songObj.name}</h3>
-          <p className="song-artist">{songObj.artist?.name}</p>
+          <p className="song-artist">{router.asPath === `/songsNotInPlaylist/${playlist_id}` ? songObj.artist.name : songObj.artistName}</p>
           <p className="song-details">
-            <strong>Genre:</strong> {songObj.genre?.name} | <strong>Year:</strong> {songObj.year}  | <strong>Duration:</strong> {songObj.duration}
+            <strong>Genre:</strong> {router.asPath === `/songsNotInPlaylist/${playlist_id}` ? songObj.genre.name : songObj.genreName} | <strong>Year:</strong> {songObj.year}  | <strong>Duration:</strong> {songObj.duration}
           </p>
         </div>
         <div className="corner">
-          {router.asPath === `/playlist/${playlist_id}` ? <button aria-label="delete" type="button" className="delete-btn" onClick={deleteSongFromPlayllist}><MdDeleteForever /></button> : <button type="button" aria-label="add" className="delete-btn" onClick={addSongToPlaylist}><IoAddCircleSharp /></button>}
+          {router.asPath === `/playlist/${playlist_id}` && getUserId.userId === user.id
+            ? (
+              <button aria-label="delete" type="button" className="delete-btn" onClick={deleteSongFromPlayllist}>
+                <MdDeleteForever />
+              </button>
+            )
+            : (
+              ''
+            )}
+          {router.asPath === `/songsNotInPlaylist/${playlist_id}`
+            ? (
+              <button type="button" aria-label="add" className="add-btn" onClick={addSongToPlaylist}>
+                <IoAddCircleSharp />
+              </button>
+            )
+            : (
+              ''
+            )}
         </div>
       </div>
     </div>
@@ -50,47 +70,27 @@ export default function PlaylistDetail({ songObj, onUpdate }) {
 }
 
 PlaylistDetail.propTypes = {
+
   songObj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
+    artistName: PropTypes.string,
+    genreName: PropTypes.string,
+    year: PropTypes.number,
+    duration: PropTypes.string,
     artist: PropTypes.shape({
-      id: PropTypes.number,
       name: PropTypes.string,
     }),
     genre: PropTypes.shape({
-      id: PropTypes.number,
       name: PropTypes.string,
     }),
-    year: PropTypes.number,
-    duration: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
+  getUserId: PropTypes.shape({
+    userId: PropTypes.number,
+  }),
 };
 
-// PlaylistDetail.propTypes = {
-//   songObj: PropTypes.shape({
-//     name: PropTypes.string,
-//     artist: PropTypes.shape({
-//       name: PropTypes.string,
-//     }),
-//     genre: PropTypes.shape({
-//       name: PropTypes.string,
-//     }),
-//     year: PropTypes.number,
-//     duration: PropTypes.string,
-
-//   }).isRequired,
-// };
-
-{ /* <Card className="mb-3">
-<Card.Body className="d-flex justify-content-between align-items-center">
-  <div>
-    <Card.Title>Song Name Placeholder</Card.Title>
-    <Card.Text>Artist Placeholder</Card.Text>
-    <Card.Text>
-      <strong>Genre:</strong> Genre Placeholder | <strong>Year:</strong> Year Placeholder | <strong>Duration:</strong> Duration Placeholder
-    </Card.Text>
-  </div>
-  <Button variant="danger">Delete</Button>
-</Card.Body>
-</Card> */ }
+PlaylistDetail.defaultProps = {
+  getUserId: {},
+};

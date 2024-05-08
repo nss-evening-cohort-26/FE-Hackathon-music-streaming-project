@@ -9,8 +9,11 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function PlaylistCard({ playlistObj, onUpdate }) {
+  const { user } = useAuth();
+
   const deleteThisPlaylist = () => {
     if (window.confirm(`Sure you want to delete ${playlistObj.name}?`)) {
       deletePlaylist(playlistObj.id).then(() => onUpdate());
@@ -24,7 +27,7 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
   });
 
   return (
-    <Card className="song-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
+    <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
       <Card.Body>
         <Card.Title className="audio">{playlistObj.name}</Card.Title>
@@ -36,10 +39,14 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
         }}
         >
           <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
-          <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
-            <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
-          </Link>
-          <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          {playlistObj.userId === user.id && (
+          <>
+            <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
+              <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+            </Link>
+            <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          </>
+          )}
         </div>
       </Card.Body>
     </Card>
@@ -53,6 +60,8 @@ PlaylistCard.propTypes = {
     dateCreated: PropTypes.string,
     isFavorite: PropTypes.bool,
     imageUrl: PropTypes.string,
+    userId: PropTypes.number,
+    userName: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

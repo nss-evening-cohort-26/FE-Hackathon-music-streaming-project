@@ -25,7 +25,9 @@ export default function SongsNotInPlaylist() {
     if (!query) {
       getAllSongsNotInPlaylist();
     } else {
-      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query));
+      const filtered = songsNotInPlaylist.filter((song) => song.name.toLowerCase().includes(query)
+      || song.artist.name.toLowerCase().includes(query)
+      || song.genre.name.toLowerCase().includes(query));
       setSearchResults(filtered);
     }
   };

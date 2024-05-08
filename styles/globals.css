@@ -214,6 +214,22 @@ h1{
   font-family: Armata;
 }
 
+.playlist-card {
+  background-color: rgba(255, 255, 255, 0.377);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out; 
+  margin: 20px;
+  flex: 0 1 25%;
+}
+
+.playlist-card:hover {
+  color: #fff; 
+}
+
+
 .list {
   min-width: '30em',
 }
@@ -237,10 +253,6 @@ h1{
 } */
 .song-card:hover {
   background-color: rgba(34, 28, 28, 0.4); 
-}
-
-.song-card:hover .delete-btn {
-  background-color: #ff3333;
 }
 
 
@@ -285,13 +297,35 @@ h1{
   justify-content: right;
 }
 
-.delete-btn:hover {
-  background-color: #ff3333;
+/* CSS for delete button */
+.delete-btn {
+  background-color: transparent; /* Set background color to transparent */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.delete-btn:hover svg {
+  transform: scale(1.35); /* Increase the size of the icon on hover */
+}
+
+/* CSS for add button */
+.add-btn {
+  background-color: transparent; /* Set background color to transparent */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding */
+  cursor: pointer; /* Change cursor to pointer */
+  transform: scale(1.3); /* Increase the size of the icon */
+  transition: transform 0.3s ease;
+}
+
+.add-btn:hover svg {
+  transform: scale(1.5);  /* Increase the size of the icon on hover */
   color: #fff; 
 }
 
 .song-card:hover .delete-btn {
-  color: #fff; 
+  color: #dd1b1b; 
 }
 
 .card-box {
