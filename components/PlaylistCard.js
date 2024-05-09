@@ -30,31 +30,31 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
 
   return (
     <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
+      <Card.Title className="audio" style={{ marginBottom: '15px' }}>{playlistObj.name}</Card.Title>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
+
       <Card.Body>
-        <Card.Title className="audio">{playlistObj.name}</Card.Title>
-        <Card.Text>
+        <Card.Text style={{ fontSize: '20px' }} className="cute">
           Created on: {formattedDate}
         </Card.Text>
         {router.asPath === '/discover' && (
-        <Card.Text>
+        <Card.Text className="cute" style={{ fontSize: '40px' }}>
           Created by: {playlistObj.userName}
         </Card.Text>
         )}
-        <div style={{
-          marginRight: '10px',
-        }}
-        >
-          <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+          <Link href={`/playlist/${playlistObj.id}`} passHref><Button style={{ backgroundColor: '#AFD9FC' }} variant="warning" className={`playlist-card-button ${PlaylistStyles.spaceBtn}`}><GrFormView style={{ color: 'white' }} /></Button></Link>
           {playlistObj.userId === user.id && (
           <>
             <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
-              <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+              <Button style={{ backgroundColor: '#DAB1D8' }} variant="success" className={`playlist-card-button ${PlaylistStyles.spaceBtn}`}><RiEditLine /></Button>
             </Link>
-            <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+            <Button variant="danger" className={`playlist-card-button ${PlaylistStyles.spaceBtn}`} onClick={deleteThisPlaylist} style={{ backgroundColor: '#C84088' }}><MdDeleteForever /></Button>
           </>
           )}
         </div>
+
       </Card.Body>
     </Card>
   );

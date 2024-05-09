@@ -361,3 +361,13 @@ h1{
 .song-card:hover .delete-btn {
   color: #dd1b1b; 
 }
+
+.playlist-card-button {
+  border: none;
+  border-radius: 19px;
+  transition: transform 0.2s; /* Add transition for smooth effect */
+}
+
+.playlist-card-button:hover {
+  transform: scale(1.5); /* Increase button size on hover */
+}
