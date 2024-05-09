@@ -55,23 +55,17 @@ export default function ShowPlaylists() {
   }, [filter]);
 
   return (
-    <div style={{ width: '80%' }}>
-      <div className="text-center"> {/* Wrapper div for centering */}
+    <div className="flex flex-col" style={{ width: '100%' }}>
+      <div className="flex audio text-center justify-content-end mt-4"> {/* Wrapper div for centering */}
         <Link href="/playlist/new" passHref>
           <Button
-            className="info"
-            style={{
-              marginTop: '15px',
-              backgroundColor: '#B6A39E',
-              color: 'black',
-              border: 'none',
-            }}
+            className="xbutton"
           >
-            Add A Playlist
+            Add a Playlist
           </Button>
         </Link>
-        <DropdownButton id="dropdown-basic-button" title="Filter" style={{ marginLeft: '80%' }}>
-          <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlist</Dropdown.Item>
+        <DropdownButton className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', marginLeft: '15px' }} id="dropdown-basic-button" title="Filter">
+          <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlists</Dropdown.Item>
           <Dropdown.Item href="#/favorites" onClick={() => setFilter('favorites')}>Favorite Playlist</Dropdown.Item>
           <Dropdown.Item href="#/newest" onClick={() => newestAndOldest('newest')}>Newest</Dropdown.Item>
           <Dropdown.Item href="#/oldest" onClick={() => newestAndOldest('oldest')}>Oldest</Dropdown.Item>

@@ -135,6 +135,13 @@ h1{
 
   }
 
+  #dropdown-basic-button {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    padding: 0
+  }
+
   .xbutton {
     cursor: pointer;
 	position: relative;
@@ -193,6 +200,64 @@ h1{
     background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
   }
 
+  .jelly {
+    cursor: pointer;
+	position: relative;
+	padding: .5rem 2rem;
+	border-radius: 3.75rem;
+	line-height: 2.5rem;
+	font-size: 2rem;
+	
+	border: .5px solid #aa1616;
+	background-image: linear-gradient(-180deg, #f86464 0%, #f84343 100%);
+	box-shadow: 0 1rem 1.25rem 0 #aa1616,
+							0 -0.25rem 1.5rem #d63a3a inset,
+							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+							0 0.25rem 0.5rem 0 rgb(221, 85, 85) inset;
+}
+
+.jelly span {
+	color: transparent;
+	background-color:#FEFAFD;
+	-webkit-background-clip: text;
+	background-clip: text;
+	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+
+  }
+
+  .jelly::before {
+    content: "";
+    display: block;
+    height: 0.25rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 7.5rem);
+    background: #fff;
+    border-radius: 100%;
+    
+    opacity: 0.7;
+    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+  }
+  
+  .jelly::after {
+    content: "";
+    display: block;
+    height: 0.25rem;
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 7.5rem);
+    background: #fff;
+    border-radius: 100%;
+    
+    filter: blur(1px);
+    opacity: 0.05;
+    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+  }
+
   #toggle {
     min-height: 4rem;
     margin: 20px 0 20px 10px;
@@ -235,7 +300,6 @@ h1{
 }
 
 .song-name,
-.song-artist,
 .song-details {
   color: #000;
 }
@@ -274,7 +338,7 @@ h1{
 
 .song-artist {
   font-size: 14px;
-  color: #333;
+  color: #4135ac;
   margin-bottom: 10px;
   font-weight: bold;
 }

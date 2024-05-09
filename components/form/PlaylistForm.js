@@ -74,9 +74,9 @@ export default function PlaylistForm({ playObj, onUpdate }) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
-            className="text-black mt-5"
+            className="text-black"
             type="switch"
-            label="Is this a favorite Playlist?"
+            label="Is this a favorite playlist?"
             name="isFavorite"
             checked={formInput.isFavorite}
             onChange={(e) => {
@@ -89,7 +89,7 @@ export default function PlaylistForm({ playObj, onUpdate }) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
-            className="text-white mt-5"
+            className="text-black"
             type="switch"
             label="Do you want to make this playlist public?"
             name="public"
@@ -102,7 +102,9 @@ export default function PlaylistForm({ playObj, onUpdate }) {
             }}
           />
         </Form.Group>
-        <Button className="xbutton" style={{ fontSize: '20px', marginTop: '15px', justifySelf: 'center' }} type="submit">{playObj.id ? 'Update' : 'Create'}</Button>
+        <div className="flex justify-content-center">
+          <Button className="xbutton cute" style={{ fontSize: '30px', marginTop: '15px' }} type="submit">{playObj.id ? 'UPDATE' : 'CREATE'}</Button>
+        </div>
       </Form>
     </div>
   );

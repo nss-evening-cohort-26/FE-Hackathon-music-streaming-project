@@ -21,7 +21,7 @@ function Home() {
 
           <img
             style={{
-              filter: 'drop-shadow(0 2px 2px white', position: 'absolute', left: '7em', zIndex: '10',
+              filter: 'drop-shadow(0 2px 2px white', position: 'absolute', left: '9em', zIndex: '10',
             }}
             alt="Y2Play logo"
             src="./logoclear.png"
@@ -45,7 +45,7 @@ function Home() {
 
             <img
               style={{
-                width: '100px', height: '100px', rotate: '15deg', filter: 'drop-shadow(10px 10px 6px #242124)', position: 'absolute', top: '0', right: '0',
+                width: '100px', height: '100px', rotate: '15deg', filter: 'drop-shadow(10px 10px 6px #242124)', position: 'absolute', top: '1em', right: '4em',
               }}
               alt="small blob"
               src="./blob.png"
@@ -67,12 +67,12 @@ function Home() {
             alt="star"
             src="./stars.png"
             style={{
-              filter: 'invert() blur(.5px)', height: '50px', position: 'absolute', right: '10px',
+              filter: 'invert() blur(.5px)', height: '50px', position: 'absolute', right: '15%', bottom: '50%',
             }}
           />
           <img
             style={{
-              rotate: '70deg', filter: 'drop-shadow(10px -10px 8px #242124)', width: '200px', margin: '-50px 50px 0 0', position: 'absolute', right: '0',
+              rotate: '70deg', filter: 'drop-shadow(10px -10px 8px #242124)', width: '200px', position: 'absolute', right: '1em', top: '9em',
             }}
             alt="blob"
             src="./blob.png"
@@ -90,11 +90,29 @@ function Home() {
 
           <img
             style={{
-              width: '300px', position: 'absolute', right: '70px', bottom: '0px', filter: 'drop-shadow(0 60px 20px #242124)', rotate: '-20deg',
+              width: '300px', position: 'absolute', right: '70px', bottom: '20px', filter: 'drop-shadow(0 60px 20px #242124)', rotate: '-20deg',
             }}
             alt="blob"
             src="./blob.png"
           />
+          <div>
+            <img
+              alt="star"
+              src="./stars.png"
+              style={{
+                filter: 'invert() blur(1px)', height: '50px', position: 'absolute', right: '25%', bottom: '10%',
+              }}
+            />
+          </div>
+          <div>
+            <img
+              alt="star"
+              src="./stars.png"
+              style={{
+                filter: 'invert() drop-shadow(3px 2px 7px gray)', height: '50px', position: 'absolute', right: '10%', bottom: '20%',
+              }}
+            />
+          </div>
         </div>
 
       </div>

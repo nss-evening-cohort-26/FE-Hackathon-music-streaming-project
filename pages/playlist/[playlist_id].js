@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
+import { IoAddCircleSharp } from 'react-icons/io5';
 import PlaylistDetail from '../../components/PlaylistDetail';
 import { deletePlaylist, getPlaylistById } from '../../api/PlaylistData';
 import { useAuth } from '../../utils/context/authContext';
@@ -40,22 +41,28 @@ export default function PlaylistDetails() {
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
         {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
-          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button variant="success" style={{ borderRadius: '20px', padding: '5px 15px', marginRight: '5px' }}><RiEditLine /></Button></Link>
-          <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 15px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          <Link href={`/playlist/edit/${playlist_id}`} passHref>
+            <Button className="jelly" style={{ filter: 'hue-rotate(90deg)', padding: '4px 16px', marginRight: '10px' }}><RiEditLine /></Button>
+          </Link>
+          <Button className="jelly" style={{ padding: '4px 16px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
         )}
 
       </div>
       {playlistDetail.userId === user.id && (
-      <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+      <div style={{ display: 'flex', justifyItems: 'flex-start' }}>
         <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
-          <Button
-            className="xbutton cute"
+          <button
+            type="button"
+            aria-label="add"
+            className="xbutton audio text-center"
             style={{
-              borderRadius: '20px', padding: '5px 25px',
+              width: '80%',
+              alignSelf: 'center',
             }}
-          >Add a Song
-          </Button>
+          >
+            <IoAddCircleSharp />
+          </button>
         </Link>
       </div>
       )}

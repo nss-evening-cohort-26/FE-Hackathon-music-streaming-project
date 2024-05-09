@@ -8,7 +8,6 @@ import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -31,9 +30,9 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
   return (
     <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
-      <Card.Body>
+      <Card.Body style={{ padding: '6px 0 0 0' }}>
         <Card.Title className="audio">{playlistObj.name}</Card.Title>
-        <Card.Text>
+        <Card.Text className="text">
           Created on: {formattedDate}
         </Card.Text>
         {router.asPath === '/discover' && (
@@ -41,17 +40,14 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
           Created by: {playlistObj.userName}
         </Card.Text>
         )}
-        <div style={{
-          marginRight: '10px',
-        }}
-        >
-          <Link href={`/playlist/${playlistObj.id}`} passHref><Button variant="warning" className={PlaylistStyles.spaceBtn}><GrFormView /></Button></Link>
+        <div className="flex justify-content-evenly mt-2">
+          <Link href={`/playlist/${playlistObj.id}`} passHref><Button className="jelly" style={{ filter: 'hue-rotate(50deg)', padding: '2px 8px' }}><GrFormView /></Button></Link>
           {playlistObj.userId === user.id && (
           <>
             <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
-              <Button variant="success" className={PlaylistStyles.spaceBtn}><RiEditLine /></Button>
+              <Button className="jelly" style={{ filter: 'hue-rotate(90deg)', padding: '2px 8px' }}><RiEditLine /></Button>
             </Link>
-            <Button variant="danger" className={PlaylistStyles.spaceBtn} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+            <Button className="jelly" style={{ padding: '2px 8px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
           </>
           )}
         </div>

@@ -41,13 +41,11 @@ export default function SongsNotInPlaylist() {
       <div className="text-center" style={{ marginLeft: '100px', width: '80%' }}>
         <Link href={`/playlist/${playlist_id}`} passHref>
           <Button
-            className="info"
+            className="audio xbutton text-white"
             style={{
-              marginTop: '15px',
+              marginTop: '20px',
               marginBottom: '20px',
-              backgroundColor: '#B6A39E',
-              color: 'black',
-              border: 'none',
+              fontSize: '30px',
             }}
           >
             Back To Playlist
