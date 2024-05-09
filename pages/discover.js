@@ -8,6 +8,7 @@ export default function Discover() {
   const [playlists, setPlaylists] = useState([]);
 
   const { user } = useAuth();
+  console.warn('playlists', playlists);
 
   const getAllUsersPlaylists = () => {
     getAllPlaylists(user.id).then(setPlaylists);
