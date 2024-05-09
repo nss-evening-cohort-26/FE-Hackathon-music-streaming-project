@@ -40,8 +40,9 @@ export default function PlaylistDetails() {
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
         {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
-          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button variant="success" style={{ borderRadius: '20px', padding: '5px 15px', marginRight: '5px' }}><RiEditLine /></Button></Link>
-          <Button variant="danger" style={{ borderRadius: '20px', padding: '5px 15px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button className="playlist-card-button" variant="success" style={{ padding: '10px 10px', margin: ' 0px 15px', backgroundColor: '#DAB1D8' }}><RiEditLine /></Button></Link>
+
+          <Button className="playlist-card-button" variant="danger" style={{ borderRadius: '20px', padding: '10px 10px', backgroundColor: '#C84088' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
         )}
 

@@ -3,15 +3,22 @@
 import { Button, Card } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getAllPlaylists } from '../api/PlaylistData';
+import { getUserPlaylists } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
   const [playlists, setPlaylists] = useState([]);
 
+  const getAllUsersFavPlaylists = () => {
+    getUserPlaylists(user.id).then((data) => {
+      const filteredData = data.filter((p) => p.isFavorite);
+      setPlaylists(filteredData);
+    });
+  };
+
   useEffect(() => {
-    getAllPlaylists(user.id).then(setPlaylists);
+    getAllUsersFavPlaylists();
   }, []);
 
   return (
@@ -123,14 +130,14 @@ function Home() {
           <div className="flex justify-content-center">
 
             {playlists.slice(0, 3).map((p) => (
-              <Link passHref href={`/playlists/${p.id}`}>
+              <Link passHref href={`/playlist/${p.id}`}>
                 <Card
                   className="flex flex-col"
                   style={{
-                    width: '13em', margin: '10px', padding: '20px', flex: '0 1 30%', justifyContent: 'space-evenly', backgroundColor: 'rgba(255, 255, 255, 0.377)',
+                    width: '13em', height: '18em', margin: '10px', padding: '20px', justifyContent: 'space-evenly', backgroundColor: 'rgba(255, 255, 255, 0.377)',
                   }}
                 >
-                  <Card.Img variant="top" src={p.imageUrl} style={{ height: '150px', objectFit: 'cover' }} />
+                  <Card.Img variant="top" src={p.imageUrl} style={{ height: '150px', objectFit: 'contain' }} />
                   <Card.Body className="flex" style={{ padding: '6px 0 0 0' }}>
                     <h2 className="audio">{p.name}</h2>
                   </Card.Body>
