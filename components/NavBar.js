@@ -56,11 +56,7 @@ export default function NavBar() {
         <div id="links" className="z-10 flex flex-col flex-1 p-1 justify-between">
           <div className="audio flex flex-col flex-shrink-0 w-64 p-3">
             <Link style={{ color: 'black' }} passHref href="/">Home</Link>
-            {/* </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3"> */}
-            <Link style={{ color: 'black' }} passHref href="/playlists">Playlists</Link>
-            {/* </div>
-          <div className="audio flex items-center justify-between flex-shrink-0 w-64 p-3"> */}
+            <Link style={{ color: 'black' }} passHref href="/playlists">My Playlists</Link>
             <Link style={{ color: 'black' }} passHref href="/profile">Profile</Link>
             {/* </div> */}
             <Link style={{ color: 'black' }} passHref href="/discover">Discover</Link>
