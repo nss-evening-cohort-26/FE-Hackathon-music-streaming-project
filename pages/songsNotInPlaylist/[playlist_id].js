@@ -38,21 +38,16 @@ export default function SongsNotInPlaylist() {
 
   return (
     <div>
-      <div className="text-center" style={{ marginLeft: '100px', width: '80%' }}>
+      <div className="flex align-items-center mt-4" style={{ justifyItems: 'space-between', marginLeft: '20px' }}>
         <Link href={`/playlist/${playlist_id}`} passHref>
           <Button
             className="audio xbutton text-white"
-            style={{
-              marginTop: '20px',
-              marginBottom: '20px',
-              fontSize: '30px',
-            }}
-          >
-            Back To Playlist
+            style={{ filter: 'hue-rotate(260deg)' }}
+          ><span>⬅</span>
           </Button>
         </Link>
+        <SearchBar onSearch={filterItems} />
       </div>
-      <SearchBar onSearch={filterItems} />
       <div className="d-flex flex-wrap" style={{ margin: '0 auto' }}>
         {searchResults.length === 0 ? (<h1 style={{ color: 'firebrick', textAlign: 'center' }}>No results are found</h1>) : searchResults.map((songObject) => (
           <PlaylistDetail key={songObject.id} songObj={songObject} onUpdate={getAllSongsNotInPlaylist} />

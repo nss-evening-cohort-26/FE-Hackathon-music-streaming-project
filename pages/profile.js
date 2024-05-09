@@ -27,7 +27,7 @@ export default function Profile() {
       }}
       >
         <Image src={getLargerPhotoUrl(user.fbUser.photoURL)} alt="Profile" className="profile-photo" width={300} height={300} quality={100} />
-        <h1 style={{ color: 'white' }}>{user.username}</h1>
+        <h1 style={{ color: 'white', textShadow: '0 0 3px black' }}>{user.username}</h1>
         <div className="bio" style={{ overflow: 'hidden', width: '70%', position: 'relative' }}>
           <h2
             className="audio text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600"

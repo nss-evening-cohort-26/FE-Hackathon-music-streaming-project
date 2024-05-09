@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
@@ -70,8 +71,8 @@ export default function NavBar() {
             <Link style={{ color: 'black' }} passHref href="/discover">Discover</Link>
           </div>
           <div className="cute w-64 p-3 mb-5 flex flex-nowrap">
-            <Button className="jelly" onClick={signOut}>
-              SIGN OUT
+            <Button className="xbutton" style={{ filter: 'hue-rotate(25deg)', padding: '.5em 1em' }} onClick={signOut}>
+              <span>Sign Out</span>
             </Button>
           </div>
         </div>

@@ -61,7 +61,7 @@ export default function ShowPlaylists() {
           <Button
             className="xbutton"
           >
-            Add a Playlist
+            <span>Add a Playlist</span>
           </Button>
         </Link>
         <DropdownButton className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', marginLeft: '15px' }} id="dropdown-basic-button" title="Filter">

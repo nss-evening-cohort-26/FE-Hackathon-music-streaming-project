@@ -1,17 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getAllPlaylists } from '../api/PlaylistData';
+import { getUserPlaylists } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
   const [playlists, setPlaylists] = useState([]);
 
+  const getAllUsersFavPlaylists = () => {
+    getUserPlaylists(user.id).then((data) => {
+      const filteredData = data.filter((p) => p.isFavorite);
+      setPlaylists(filteredData);
+    });
+  };
+
   useEffect(() => {
-    getAllPlaylists(user.id).then(setPlaylists);
+    getAllUsersFavPlaylists();
   }, []);
 
   return (
@@ -56,7 +63,7 @@ function Home() {
                 alt="star"
                 src="./stars.png"
                 style={{
-                  filter: 'invert() blur(1px)', height: '50px', position: 'absolute', right: '250px', top: '100px',
+                  filter: 'invert() blur(1px)', height: '50px', position: 'absolute', right: '300px', top: '100px',
                 }}
               />
             </div>
@@ -119,11 +126,11 @@ function Home() {
       <div
         className="flex"
         style={{
-          justifyContent: 'center', alignContent: 'center', zIndex: '4', position: 'absolute', top: '30%', left: '10%',
+          zIndex: '4', position: 'absolute', top: '20%', right: '20%', width: '75%', justifyContent: 'flex-end', gap: '50px',
         }}
       >
-        <div className="fave flex flex-col" style={{ marginRight: '30px' }}>
-          <h2 className="cute">ARTIST OF THE MOMENT</h2>
+        <div className="fave flex flex-col">
+          <h2 className="cute purple">Artist of the Moment</h2>
           <Card
             className="flex flex-col"
             style={{
@@ -132,25 +139,25 @@ function Home() {
           >
             <Card.Img variant="top" src="/britney.jpg" style={{ height: '150px', objectFit: 'cover' }} />
             <Card.Body className="flex" style={{ padding: '6px 0 0 0' }}>
-              <h2 className="audio">Britney Spears</h2>
+              <h2 className="cute" style={{ fontSize: '40px' }}>Britney Spears</h2>
             </Card.Body>
           </Card>
         </div>
         <div className="fave flex flex-col text-black">
-          <h2 className="cute">CURRENTLY OBSESSED</h2>
+          <h2 className="cute purple">Currently Obsessed</h2>
           <div className="flex justify-content-center">
 
             {playlists.slice(0, 3).map((p) => (
-              <Link passHref href={`/playlists/${p.id}`}>
+              <Link passHref href={`/playlist/${p.id}`}>
                 <Card
                   className="flex flex-col"
                   style={{
-                    width: '13em', margin: '10px', padding: '20px', flex: '0 1 30%', justifyContent: 'space-evenly', backgroundColor: 'rgba(255, 255, 255, 0.377)',
+                    width: '18em', margin: '10px', padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.377)',
                   }}
                 >
-                  <Card.Img variant="top" src={p.imageUrl} style={{ height: '150px', objectFit: 'cover' }} />
-                  <Card.Body className="flex" style={{ padding: '6px 0 0 0' }}>
-                    <h2 className="audio">{p.name}</h2>
+                  <Card.Img variant="top" src={p.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
+                  <Card.Body className="flex flex-col" style={{ padding: '6px 0 0 0' }}>
+                    <h2 className="cute" style={{ fontSize: '40px' }}>{p.name}</h2>
                   </Card.Body>
                 </Card>
               </Link>
@@ -158,15 +165,35 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex justify-content-center mt-5">
+      <div
+        className="flex flex-col position-absolute"
+        style={{ left: '6em', bottom: '11%', zIndex: '6' }}
+      >
         <Link passHref href="/playlist/new">
-          <Button
-            style={{
-              width: '40%', position: 'absolute', left: '6em', bottom: '10%', zIndex: '8',
-            }}
-            className="xbutton audio make"
-          >Make a playlist
-          </Button>
+
+          <button
+            type="button"
+            className="make cute z-1"
+          >
+            <img
+              alt="make a playlist button"
+              src="/blob.png"
+              style={{
+                position: 'relative',
+                zIndex: '10',
+                width: '250px',
+                filter: 'saturate(4) hue-rotate(30deg) drop-shadow(-20px -20px 20px #242124)',
+                rotate: '160deg',
+              }}
+            />
+            <h2
+              className="audio position-absolute z-20"
+              style={{
+                left: '30%', bottom: '40%', textShadow: '-1px -1px  3px white', fontSize: '35px',
+              }}
+            >Start
+            </h2>
+          </button>
         </Link>
       </div>
     </>

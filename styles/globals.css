@@ -76,17 +76,6 @@ a {
   width: 100%;
 }
 
-.pill {
-  background-size: 100% 100%;
-  background-position: 0px 0px,0px 0px;
-  background-image: radial-gradient(#f9c8fd 0%, #3e0d5a 100%); 
-  border-radius: 500px;
-  padding: 40px;
-  border:#3e0d5a solid 2px;
-  box-shadow: inset 0 0 10px #3e0d5a;
-
-}
-
 h1{
   font-size: 40px;
   margin-bottom: 20px;
@@ -122,6 +111,11 @@ h1{
 
   .text {
     font-family: Armata;
+  }
+
+  .purple {
+    font-size: 50px;
+    color: #C01F9E 
   }
 
   .hidden {
@@ -200,64 +194,6 @@ h1{
     background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
   }
 
-  .jelly {
-    cursor: pointer;
-	position: relative;
-	padding: .5rem 2rem;
-	border-radius: 3.75rem;
-	line-height: 2.5rem;
-	font-size: 2rem;
-	
-	border: .5px solid #aa1616;
-	background-image: linear-gradient(-180deg, #f86464 0%, #f84343 100%);
-	box-shadow: 0 1rem 1.25rem 0 #aa1616,
-							0 -0.25rem 1.5rem #d63a3a inset,
-							0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
-							0 0.25rem 0.5rem 0 rgb(221, 85, 85) inset;
-}
-
-.jelly span {
-	color: transparent;
-	background-color:#FEFAFD;
-	-webkit-background-clip: text;
-	background-clip: text;
-	filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
-
-  }
-
-  .jelly::before {
-    content: "";
-    display: block;
-    height: 0.25rem;
-    position: absolute;
-    top: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 7.5rem);
-    background: #fff;
-    border-radius: 100%;
-    
-    opacity: 0.7;
-    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
-  }
-  
-  .jelly::after {
-    content: "";
-    display: block;
-    height: 0.25rem;
-    position: absolute;
-    bottom: 0.75rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 7.5rem);
-    background: #fff;
-    border-radius: 100%;
-    
-    filter: blur(1px);
-    opacity: 0.05;
-    background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
-  }
-
   #toggle {
     min-height: 4rem;
     margin: 20px 0 20px 10px;
@@ -284,10 +220,11 @@ h1{
   border-radius: 8px;
   padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   transition: background-color 0.3s ease-in-out; 
   margin: 20px;
-  flex: 0 1 25%;
+  flex: 0 1 30%;
 }
 
 .playlist-card:hover {
@@ -408,6 +345,18 @@ h1{
   transform: scale(1.35); 
 }
 
+.add-song svg{
+  cursor: pointer; 
+  transform: scale(3);
+  transition: transform 0.3s ease;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.add-song:hover svg {
+  transform: scale(4);
+}
+
 .add-btn {
   background-color: transparent; 
   border: none; 
@@ -424,4 +373,36 @@ h1{
 
 .song-card:hover .delete-btn {
   color: #dd1b1b; 
+}
+
+.playlist-card-button {
+  border: none;
+  border-radius: 19px;
+  transition: transform 0.2s; /* Add transition for smooth effect */
+}
+
+.playlist-card-button:hover {
+  transform: scale(1.5); /* Increase button size on hover */
+}
+
+.edit {
+  box-shadow: 0 0 5px #bb5fb6  
+}
+
+.delete {
+  box-shadow: 0 0 5px #9b3f70  
+}
+
+.view {
+  box-shadow: 0 0 5px #6488a7 
+}
+
+.make {
+  background-color: transparent;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.make:hover {
+  transform: scale(1.5);
 }

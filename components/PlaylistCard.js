@@ -8,6 +8,7 @@ import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -28,29 +29,32 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
   });
 
   return (
-    <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
+    <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px' }}>
+      <Card.Title className="audio" style={{ marginBottom: '15px', fontSize: '30px' }}>{playlistObj.name}</Card.Title>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
-      <Card.Body style={{ padding: '6px 0 0 0' }}>
-        <Card.Title className="audio">{playlistObj.name}</Card.Title>
-        <Card.Text className="text">
-          Created on: {formattedDate}
+
+      <Card.Body style={{ padding: '6px 0 0 0', lineHeight: '1', marginTop: '10px' }}>
+        <Card.Text style={{ fontSize: '30px' }} className="cute">
+          <strong>Created on:</strong> {formattedDate}
         </Card.Text>
         {router.asPath === '/discover' && (
-        <Card.Text>
-          Created by: {playlistObj.userName}
+        <Card.Text className="cute" style={{ fontSize: '30px' }}>
+          <strong>Created by:</strong> {playlistObj.userName}
         </Card.Text>
         )}
-        <div className="flex justify-content-evenly mt-2">
-          <Link href={`/playlist/${playlistObj.id}`} passHref><Button className="jelly" style={{ filter: 'hue-rotate(50deg)', padding: '2px 8px' }}><GrFormView /></Button></Link>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+          <Link href={`/playlist/${playlistObj.id}`} passHref><Button style={{ backgroundColor: '#AFD9FC' }} variant="warning" className={`view playlist-card-button ${PlaylistStyles.spaceBtn}`}><GrFormView style={{ color: 'white' }} /></Button></Link>
           {playlistObj.userId === user.id && (
           <>
             <Link href={`/playlist/edit/${playlistObj.id}`} passHref>
-              <Button className="jelly" style={{ filter: 'hue-rotate(90deg)', padding: '2px 8px' }}><RiEditLine /></Button>
+              <Button style={{ backgroundColor: '#DAB1D8' }} variant="success" className={`edit playlist-card-button ${PlaylistStyles.spaceBtn}`}><RiEditLine /></Button>
             </Link>
-            <Button className="jelly" style={{ padding: '2px 8px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+            <Button variant="danger" className={`delete playlist-card-button ${PlaylistStyles.spaceBtn}`} onClick={deleteThisPlaylist} style={{ backgroundColor: '#C84088' }}><MdDeleteForever /></Button>
           </>
           )}
         </div>
+
       </Card.Body>
     </Card>
   );

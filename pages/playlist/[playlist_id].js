@@ -38,13 +38,15 @@ export default function PlaylistDetails() {
         display: 'flex', justifyContent: 'space-between', marginTop: '25px', width: '100%',
       }}
       >
+        <Link passHref href="/playlists">
+          <Button className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', position: 'absolute', left: '250px' }}><span>⬅</span></Button>
+        </Link>
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
         {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
-          <Link href={`/playlist/edit/${playlist_id}`} passHref>
-            <Button className="jelly" style={{ filter: 'hue-rotate(90deg)', padding: '4px 16px', marginRight: '10px' }}><RiEditLine /></Button>
-          </Link>
-          <Button className="jelly" style={{ padding: '4px 16px' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button className="edit playlist-card-button" variant="success" style={{ padding: '10px 10px', margin: ' 0px 15px', backgroundColor: '#DAB1D8' }}><RiEditLine /></Button></Link>
+
+          <Button className="delete playlist-card-button" variant="danger" style={{ borderRadius: '20px', padding: '10px 10px', backgroundColor: '#C84088' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
         )}
 
@@ -52,17 +54,17 @@ export default function PlaylistDetails() {
       {playlistDetail.userId === user.id && (
       <div style={{ display: 'flex', justifyItems: 'flex-start' }}>
         <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
-          <button
-            type="button"
+          <Button
+            className="add-song"
             aria-label="add"
-            className="xbutton audio text-center"
             style={{
-              width: '80%',
               alignSelf: 'center',
+              backgroundColor: 'transparent',
+              border: 'none',
             }}
           >
             <IoAddCircleSharp />
-          </button>
+          </Button>
         </Link>
       </div>
       )}
