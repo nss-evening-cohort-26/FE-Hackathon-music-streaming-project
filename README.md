@@ -16,18 +16,22 @@
 ___
 
 ## What is Y2PLAY ?
-...
+Y2Play - your one-stop shop, ultimate genie for playlist organization. 
 
 ## Who is the user ?
-- ...
+Y2Play is made by and for the music enthusiasts who wish to curate the vibes and manage their playlists, all at the same time.
 
 ## MVP Features
-- ....
-Add links to loom video to showcase features 
+- Authenticate utilizing custom backend API calls and FireBase, OAuth authentication.
+- Create playlists.
+- Choose from a list of songs to add to playlists, features a many-to-many relationship between playlists and songs entity.
+- Search songs.
+- Make playlists public.
+- Have a playlist you're aboslutely obsessed with? Show it by favoriting it!
+- Filter playlists.
+- Edit playlist information such as name, image, or whether or not it is public.
 
 ## Stretch Features
-- ....
-Add links to loom video to showcase features 
 
 ## Planning for Y2PLAY
 - [ERD](https://dbdiagram.io/d/Hackathon_e24_e26-66240bb603593b6b6183baf3)
