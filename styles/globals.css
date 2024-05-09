@@ -358,7 +358,9 @@ h1{
   border-radius: 10px;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  width: fit-content;
+  height: fit-content;
 
 }

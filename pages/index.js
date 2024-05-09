@@ -21,13 +21,19 @@ function Home() {
 
           <img
             style={{
-              filter: 'drop-shadow(0 2px 2px white', position: 'relative', left: '-50px',
+              filter: 'drop-shadow(0 2px 2px white', position: 'absolute', left: '7em', zIndex: '10',
             }}
             alt="Y2Play logo"
             src="./logoclear.png"
           />
           <div className="">
-            <img alt="star" src="./stars.png" style={{ filter: 'invert() blur(1.5px)', height: '50px' }} />
+            <img
+              alt="star"
+              src="./stars.png"
+              style={{
+                filter: 'invert() blur(1.5px)', height: '50px', position: 'absolute', right: '150px',
+              }}
+            />
 
             <img
               alt="matrix"
@@ -39,22 +45,34 @@ function Home() {
 
             <img
               style={{
-                width: '100px', height: '100px', rotate: '15deg', filter: 'drop-shadow(10px 10px 6px #242124)',
+                width: '100px', height: '100px', rotate: '15deg', filter: 'drop-shadow(10px 10px 6px #242124)', position: 'absolute', top: '0', right: '0',
               }}
               alt="small blob"
               src="./blob.png"
             />
             <div className="flex justify-content-end">
 
-              <img alt="star" src="./stars.png" style={{ filter: 'invert() blur(1px)', height: '50px' }} />
+              <img
+                alt="star"
+                src="./stars.png"
+                style={{
+                  filter: 'invert() blur(1px)', height: '50px', position: 'absolute', right: '250px', top: '100px',
+                }}
+              />
             </div>
           </div>
         </div>
         <div className="flex align-self-end">
-          <img alt="star" src="./stars.png" style={{ filter: 'invert() blur(.5px)', height: '50px', margin: '60px 10px 0 0' }} />
+          <img
+            alt="star"
+            src="./stars.png"
+            style={{
+              filter: 'invert() blur(.5px)', height: '50px', position: 'absolute', right: '10px',
+            }}
+          />
           <img
             style={{
-              rotate: '70deg', filter: 'drop-shadow(10px -10px 8px #242124)', width: '200px', margin: '-50px 50px 0 0',
+              rotate: '70deg', filter: 'drop-shadow(10px -10px 8px #242124)', width: '200px', margin: '-50px 50px 0 0', position: 'absolute', right: '0',
             }}
             alt="blob"
             src="./blob.png"
@@ -62,7 +80,13 @@ function Home() {
 
         </div>
         <div className="flex align-self-end">
-          <img alt="star" src="./stars.png" style={{ filter: 'invert() blur(1px)', height: '50px' }} />
+          <img
+            alt="star"
+            src="./stars.png"
+            style={{
+              filter: 'invert() blur(1px)', height: '50px', position: 'absolute', right: '50px', bottom: '40%',
+            }}
+          />
 
           <img
             style={{
@@ -74,28 +98,58 @@ function Home() {
         </div>
 
       </div>
-      <div style={{ position: 'absolute', left: '100px', top: '200px' }}>
+      <div
+        className="flex"
+        style={{
+          justifyContent: 'center', alignContent: 'center', zIndex: '4', position: 'absolute', top: '30%', left: '10%',
+        }}
+      >
+        <div className="fave flex flex-col" style={{ marginRight: '30px' }}>
+          <h2 className="cute">ARTIST OF THE MOMENT</h2>
+          <Card
+            className="flex flex-col"
+            style={{
+              width: '13em', margin: '10px', padding: '20px', flex: '0 1 30%', justifyContent: 'space-evenly', backgroundColor: 'rgba(255, 255, 255, 0.377)',
+            }}
+          >
+            <Card.Img variant="top" src="/britney.jpg" style={{ height: '150px', objectFit: 'cover' }} />
+            <Card.Body className="flex" style={{ padding: '6px 0 0 0' }}>
+              <h2 className="audio">Britney Spears</h2>
+            </Card.Body>
+          </Card>
+        </div>
         <div className="fave flex flex-col text-black">
           <h2 className="cute">CURRENTLY OBSESSED</h2>
           <div className="flex justify-content-center">
 
             {playlists.slice(0, 3).map((p) => (
               <Link passHref href={`/playlists/${p.id}`}>
-                <Card className="flex song-card" style={{ maxHeight: '200px', margin: '10px', padding: '10px' }}>
-                  <Card.Img variant="top" src={p.imageUrl} style={{ maxHeight: '100px', objectFit: 'cover' }} />
-                  <Card.Body className="flex justify-content-center">
-                    <Card.Title>{p.name}</Card.Title>
+                <Card
+                  className="flex flex-col"
+                  style={{
+                    width: '13em', margin: '10px', padding: '20px', flex: '0 1 30%', justifyContent: 'space-evenly', backgroundColor: 'rgba(255, 255, 255, 0.377)',
+                  }}
+                >
+                  <Card.Img variant="top" src={p.imageUrl} style={{ height: '150px', objectFit: 'cover' }} />
+                  <Card.Body className="flex" style={{ padding: '6px 0 0 0' }}>
+                    <h2 className="audio">{p.name}</h2>
                   </Card.Body>
                 </Card>
               </Link>
             ))}
           </div>
         </div>
-        <div className="flex justify-content-center mt-5">
-          <Link passHref href="/playlist/new">
-            <Button style={{ width: '70%' }} className="xbutton audio make">Make a playlist</Button>
-          </Link>
-        </div>
+      </div>
+      <div className="flex justify-content-center mt-5">
+        <Link passHref href="/playlist/new">
+          <Button
+            style={{
+              width: '40%', position: 'absolute', left: '6em', bottom: '10%', zIndex: '8',
+            }}
+            className="xbutton audio make"
+          >Make a playlist
+          </Button>
+        </Link>
       </div>
     </>
   );
