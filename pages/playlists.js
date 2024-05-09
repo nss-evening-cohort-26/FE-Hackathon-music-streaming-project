@@ -79,7 +79,7 @@ export default function ShowPlaylists() {
 
       </div>
       <div className="d-flex justify-content-center align-items-center flex-wrap">
-        {playlists.length === 0 ? <h1 style={{ textAlign: 'center', color: 'white', width: '100%' }}>You Have No Playlists</h1> : playlists.map((playlist) => (
+        {playlists == null ? <h1 style={{ textAlign: 'center', color: 'white', width: '100%' }}>You Have No Playlists</h1> : playlists.map((playlist) => (
           <PlaylistCard key={playlist.id} playlistObj={playlist} onUpdate={getAllUsersPlaylists} />
         ))}
       </div>

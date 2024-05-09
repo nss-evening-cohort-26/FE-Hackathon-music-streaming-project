@@ -7,11 +7,13 @@ import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PlaylistStyles from '../styles/PlaylistCard.module.css';
 import { deletePlaylist } from '../api/PlaylistData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function PlaylistCard({ playlistObj, onUpdate }) {
+  const router = useRouter();
   const { user } = useAuth();
 
   const deleteThisPlaylist = () => {
@@ -34,6 +36,11 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
         <Card.Text>
           Created on: {formattedDate}
         </Card.Text>
+        {router.asPath === '/discover' && (
+        <Card.Text>
+          Created by: {playlistObj.userName}
+        </Card.Text>
+        )}
         <div style={{
           marginRight: '10px',
         }}

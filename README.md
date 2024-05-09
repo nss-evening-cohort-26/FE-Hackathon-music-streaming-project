@@ -1,44 +1,49 @@
-# React/Next.js Django Auth Template
+<div style="text-align:center">
+ 
+# 🎸 Y2PLAY 🎸
+<!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
+![image](https://github.com/nss-evening-cohort-26/FE-Hackathon-music-streaming-project/assets/153558948/670baa6e-87a3-4877-9cfb-e901ef84cb52)
 
-## Topics
-- [Get Started](#getting-started)
-- [Starting the Project](#starting-the-project)
+</div>
+
+## Topics 
+- [What is Y2PLAY ?](#what-is-y2play-)
+- [Who is the user ?](#who-is-the-user-)
+- [MVP Features](#mvp-features)
+- [Stretch Features ](#stretch-feature)
+- [Planning for Y2PLAY](#planning-for-y2play)
+- [Contributors](#contributors)
 ___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+## What is Y2PLAY ?
+Y2Play - your one-stop shop, ultimate genie for playlist organization. 
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
+## Who is the user ?
+Y2Play is made by and for the music enthusiasts who wish to curate the vibes and manage their playlists, all at the same time.
 
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. Create a `.env` file at the root of the project
-1. Copy/Paste the contents of the `.env.sample` file to your newly created `.env` file.
-1. Copy over all of your Firebase values into the `.env` file.
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
+## MVP Features
+- Authenticate utilizing custom backend API calls and FireBase, OAuth authentication.
+- Create playlists.
+- Choose from a list of songs to add to playlists, features a many-to-many relationship between playlists and songs entity.
+- Have a playlist you're aboslutely obsessed with? Show it by favoriting it!
+- Filter playlists.
+- Edit playlist information such as name, image, or whether or not it is public.
 
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
+## Stretch Features
+- The ability to make playlists public - for others to view and pull inspo from.
+- A search function to allow for you to search for songs.
+- A discover function which allows you to view all public playlists created by users just like you!
 
+## Planning for Y2PLAY
+- [ERD](https://dbdiagram.io/d/Hackathon_e24_e26-66240bb603593b6b6183baf3)
+  ![image](https://github.com/nss-evening-cohort-26/FE-Hackathon-music-streaming-project/assets/153558948/5820e6af-27fb-47f9-9158-79a3a428871e)
+- [Wireframes](https://www.figma.com/file/GH0W2Z3RD4CeRjwZKRJ8Cp/Britnay-Gore's-team-library?type=design&node-id=0%3A1&mode=design&t=m8kXsRDoowBwwBms-1)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
-
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributors
+> 🎧 FRONTEND DEVS 🎧
+- [Yarelis Martin](https://github.com/your-github-url)
+- [Britnay Gore](https://github.com/britnay268)
+> 💿 BACKEND DEVS 💿
+- [Courtney Fairall](https://github.com/cnfairall)
+- [Keana Cobarde](https://github.com/keanacobarde)
+- [Dylan Moore](https://github.com/dylankmoore)
