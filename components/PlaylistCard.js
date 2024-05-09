@@ -32,7 +32,7 @@ export default function PlaylistCard({ playlistObj, onUpdate }) {
     <Card className="playlist-card" style={{ width: '18rem', margin: '20px 20px', flex: '0 1 30%' }}>
       <Card.Img variant="top" src={playlistObj.imageUrl} style={{ height: '300px', objectFit: 'cover' }} />
       <Card.Body>
-        <Card.Title>{playlistObj.name}</Card.Title>
+        <Card.Title className="audio">{playlistObj.name}</Card.Title>
         <Card.Text>
           Created on: {formattedDate}
         </Card.Text>
