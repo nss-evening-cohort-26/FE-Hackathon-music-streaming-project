@@ -1,6 +1,6 @@
 <div style="text-align:center">
  
-# Y2PLAY 
+# 🎸 Y2PLAY 🎸
 <!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 ![image](https://github.com/nss-evening-cohort-26/FE-Hackathon-music-streaming-project/assets/153558948/670baa6e-87a3-4877-9cfb-e901ef84cb52)
 
