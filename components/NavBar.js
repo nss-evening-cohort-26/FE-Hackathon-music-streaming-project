@@ -21,7 +21,7 @@ export default function NavBar() {
 
       <img
         alt="matrix"
-        src="./matrix.png"
+        src="/matrix.png"
         style={{
           position: 'absolute', height: '500px', width: '200px', left: '-60px', top: '0px', filter: 'blur(.5px) hue-rotate(60deg)', transform: 'rotateY(180deg)',
         }}
@@ -70,9 +70,9 @@ export default function NavBar() {
             {/* </div> */}
             <Link style={{ color: 'black' }} passHref href="/discover">Discover</Link>
           </div>
-          <div className="audio w-64 p-3 mb-4 jelly">
-            <Button variant="danger" onClick={signOut}>
-              Sign Out
+          <div className="cute w-64 p-3 mb-5 flex flex-nowrap">
+            <Button className="xbutton" style={{ filter: 'hue-rotate(25deg)', padding: '.5em 1em' }} onClick={signOut}>
+              <span>Sign Out</span>
             </Button>
           </div>
         </div>

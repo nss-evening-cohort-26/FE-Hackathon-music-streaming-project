@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { RiEditLine } from 'react-icons/ri';
 import { MdDeleteForever } from 'react-icons/md';
+import { IoAddCircleSharp } from 'react-icons/io5';
 import PlaylistDetail from '../../components/PlaylistDetail';
 import { deletePlaylist, getPlaylistById } from '../../api/PlaylistData';
 import { useAuth } from '../../utils/context/authContext';
@@ -37,25 +38,32 @@ export default function PlaylistDetails() {
         display: 'flex', justifyContent: 'space-between', marginTop: '25px', width: '100%',
       }}
       >
+        <Link passHref href="/playlists">
+          <Button className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', position: 'absolute', left: '250px' }}><span>⬅</span></Button>
+        </Link>
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
         {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
-          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button className="playlist-card-button" variant="success" style={{ padding: '10px 10px', margin: ' 0px 15px', backgroundColor: '#DAB1D8' }}><RiEditLine /></Button></Link>
+          <Link href={`/playlist/edit/${playlist_id}`} passHref><Button className="edit playlist-card-button" variant="success" style={{ padding: '10px 10px', margin: ' 0px 15px', backgroundColor: '#DAB1D8' }}><RiEditLine /></Button></Link>
 
-          <Button className="playlist-card-button" variant="danger" style={{ borderRadius: '20px', padding: '10px 10px', backgroundColor: '#C84088' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
+          <Button className="delete playlist-card-button" variant="danger" style={{ borderRadius: '20px', padding: '10px 10px', backgroundColor: '#C84088' }} onClick={deleteThisPlaylist}><MdDeleteForever /></Button>
         </div>
         )}
 
       </div>
       {playlistDetail.userId === user.id && (
-      <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+      <div style={{ display: 'flex', justifyItems: 'flex-start' }}>
         <Link href={`/songsNotInPlaylist/${playlist_id}`} passHref>
           <Button
-            className="xbutton cute"
+            className="add-song"
+            aria-label="add"
             style={{
-              borderRadius: '20px', padding: '5px 25px',
+              alignSelf: 'center',
+              backgroundColor: 'transparent',
+              border: 'none',
             }}
-          >Add a Song
+          >
+            <IoAddCircleSharp />
           </Button>
         </Link>
       </div>
