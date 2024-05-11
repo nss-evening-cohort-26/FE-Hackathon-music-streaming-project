@@ -28,16 +28,18 @@ Y2Play is made by and for the music enthusiasts who wish to curate the vibes and
 - Have a playlist you're aboslutely obsessed with? Show it by favoriting it!
 - Filter playlists.
 - Edit playlist information such as name, image, or whether or not it is public.
+- Delete playlists.
 
 ## Stretch Features
 - The ability to make playlists public - for others to view and pull inspo from.
-- A search function to allow for you to search for songs.
+- A search function to allow for you to search for songs by song name, artist name, or genre name.
 - A discover function which allows you to view all public playlists created by users just like you!
 
 ## Planning for Y2PLAY
 - [ERD](https://dbdiagram.io/d/Hackathon_e24_e26-66240bb603593b6b6183baf3)
   ![image](https://github.com/nss-evening-cohort-26/FE-Hackathon-music-streaming-project/assets/153558948/5820e6af-27fb-47f9-9158-79a3a428871e)
 - [Wireframes](https://www.figma.com/file/GH0W2Z3RD4CeRjwZKRJ8Cp/Britnay-Gore's-team-library?type=design&node-id=0%3A1&mode=design&t=m8kXsRDoowBwwBms-1)
+- [Backend Repo](https://github.com/dylankmoore/BE-MusicStreaming)
 
 ## Contributors
 > 🎧 FRONTEND DEVS 🎧
