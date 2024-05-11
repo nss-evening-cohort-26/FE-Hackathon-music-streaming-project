@@ -38,9 +38,19 @@ export default function PlaylistDetails() {
         display: 'flex', justifyContent: 'space-between', marginTop: '25px', width: '100%',
       }}
       >
-        <Link passHref href="/playlists">
-          <Button className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', position: 'absolute', left: '250px' }}><span>⬅</span></Button>
-        </Link>
+        {playlistDetail.userId !== user.id ? (
+          <Link passHref href="/discover">
+            <Button className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', position: 'absolute', left: '250px' }}>
+              <span>⬅</span>
+            </Button>
+          </Link>
+        ) : (
+          <Link passHref href="/playlists">
+            <Button className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', position: 'absolute', left: '250px' }}>
+              <span>⬅</span>
+            </Button>
+          </Link>
+        )}
         <h1 className="audio mb-3"> {playlistDetail.name}</h1>
         {playlistDetail.userId === user.id && (
         <div className="align-content-center mb-2">
