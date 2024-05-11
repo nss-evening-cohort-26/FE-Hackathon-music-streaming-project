@@ -55,6 +55,7 @@ export default function ShowPlaylists() {
   }, [filter]);
 
   return (
+
     <div className="flex flex-col" style={{ width: '100%' }}>
       <div className="flex audio text-center justify-content-end mt-4"> {/* Wrapper div for centering */}
         <Link href="/playlist/new" passHref>
@@ -64,13 +65,14 @@ export default function ShowPlaylists() {
             <span>Add a Playlist</span>
           </Button>
         </Link>
-        <DropdownButton className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', marginLeft: '15px' }} id="dropdown-basic-button" title="Filter">
-          <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlists</Dropdown.Item>
-          <Dropdown.Item href="#/favorites" onClick={() => setFilter('favorites')}>Favorite Playlist</Dropdown.Item>
-          <Dropdown.Item href="#/newest" onClick={() => newestAndOldest('newest')}>Newest</Dropdown.Item>
-          <Dropdown.Item href="#/oldest" onClick={() => newestAndOldest('oldest')}>Oldest</Dropdown.Item>
-        </DropdownButton>
-
+        <div className="relative-container">
+          <DropdownButton className="audio xbutton" style={{ filter: 'hue-rotate(260deg)', marginLeft: '15px', zIndex: '1' }} id="dropdown-basic-button" title="Filter">
+            <Dropdown.Item href="#/my-playlists" onClick={() => setFilter('all')}>All Playlists</Dropdown.Item>
+            <Dropdown.Item href="#/favorites" onClick={() => setFilter('favorites')}>Favorite Playlist</Dropdown.Item>
+            <Dropdown.Item href="#/newest" onClick={() => newestAndOldest('newest')}>Newest</Dropdown.Item>
+            <Dropdown.Item href="#/oldest" onClick={() => newestAndOldest('oldest')}>Oldest</Dropdown.Item>
+          </DropdownButton>
+        </div>
       </div>
       <div className="d-flex justify-content-center align-items-center flex-wrap">
         {playlists == null ? <h1 style={{ textAlign: 'center', color: 'white', width: '100%' }}>You Have No Playlists</h1> : playlists.map((playlist) => (
@@ -78,5 +80,6 @@ export default function ShowPlaylists() {
         ))}
       </div>
     </div>
+
   );
 }
